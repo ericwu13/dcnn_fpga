@@ -11,7 +11,7 @@ module SNG(
    parameter IDLE = 2'b00, GEN = 2'b01, DONE = 2'b10;
    logic [1:0] current_state_r,
                current_state_w;
-   logic start_fsm_r, start_fsm_w
+   logic start_fsm_r, start_fsm_w,
          stop_fsm_r, stop_fsm__w;
    logic [1:0] sel;
 
