@@ -30,7 +30,7 @@ module SNG(
       .o_data(o_sn_bit)
    );
    always_comb begin
-      counter_w = counter_w;
+      counter_w = counter_r;
       current_state_w = current_state_r;
       start_fsm_w = start_fsm_r;
       stop_fsm_w = stop_fsm_r;
