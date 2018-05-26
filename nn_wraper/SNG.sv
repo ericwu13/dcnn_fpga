@@ -12,7 +12,7 @@ module SNG(
    logic [1:0] current_state_r,
                current_state_w;
    logic start_fsm_r, start_fsm_w,
-         stop_fsm_r, stop_fsm__w;
+         stop_fsm_r, stop_fsm_w;
    logic [1:0] sel;
 
    FSM_16_state fsm(
@@ -21,17 +21,17 @@ module SNG(
       .i_start_fsm(start_fsm_r),
       .i_stop_fsm(stop_fsm_r),
       .o_sel(sel)
-   )
+   );
 
    MUX_4to1 mux(
       .i_sel(sel),
       .i_data(i_x_bn),
       .o_data(o_sn_bit)
-   )
+   );
    always_comb begin
       current_state_w = current_state_r;
       start_fsm_w = start_fsm_r;
-      stop_fsm__w = stop_fsm_r;
+      stop_fsm_w = stop_fsm_r;
       case(current_state_r)
          IDLE: begin
             if(i_start_sng) begin
@@ -53,7 +53,7 @@ module SNG(
       endcase
    end
 
-   always_ff(posedge i_clk_sng or posedge i_rst_sng) begin
+   always_ff@(posedge i_clk_sng or posedge i_rst_sng) begin
       if(i_rst_sng) begin
          current_state_r <= 0;
          start_fsm_r <= 0;
@@ -61,7 +61,7 @@ module SNG(
       end else begin
          current_state_r <= current_state_w;
          start_fsm_r <= start_fsm_w;
-         stop_fsm_r <= stop_fsm__w;
+         stop_fsm_r <= stop_fsm_w;
       end
    end
 endmodule
@@ -93,8 +93,7 @@ module FSM_16_state(
                   (counter_r == 11)? 1:
                   (counter_r == 12)? 3:
                   (counter_r == 13)? 2:
-                  (counter_r == 14)? 3:
-                  (counter_r == 15)? 2:
+                  (counter_r == 14)? 3:2;
    always_comb begin
       current_state_w = current_state_r;
       counter_w = counter_r;
