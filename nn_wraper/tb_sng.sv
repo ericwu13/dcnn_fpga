@@ -29,7 +29,11 @@ module tb;
       start = 1;
       #CLK
       start = 0;
-		#(5000*CLK)
+		#(50*CLK)
+      stop = 1;
+      #CLK
+      stop = 0;
+
 		$finish;
    end
    endmodule
