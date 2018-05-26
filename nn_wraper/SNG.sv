@@ -11,6 +11,7 @@ module SNG(
    parameter IDLE = 2'b00, GEN = 2'b01, DONE = 2'b10;
    logic [1:0] current_state_r,
                current_state_w;
+   logic [3:0] counter_r, counter_w;
    logic start_fsm_r, start_fsm_w,
          stop_fsm_r, stop_fsm_w;
    logic [1:0] sel;
@@ -29,6 +30,7 @@ module SNG(
       .o_data(o_sn_bit)
    );
    always_comb begin
+      counter_w = counter_w;
       current_state_w = current_state_r;
       start_fsm_w = start_fsm_r;
       stop_fsm_w = stop_fsm_r;
@@ -37,12 +39,17 @@ module SNG(
             if(i_start_sng) begin
                start_fsm_w = 1;
                stop_fsm_w = 0;
+               counter_w = 0;
             end else begin
+               stop_fsm_w = stop_fsm_r;
+               start_fsm_w = start_fsm_r;
+               counter_w = counter_r;
             end
          end
          GEN: begin
+            counter_w = counter_r + 1;
             start_fsm_w = 0;
-            if(i_stop_sng) begin
+            if(i_stop_sng || counter_r == 15) begin
                current_state_w = IDLE;
                stop_fsm_w = 1;
             end else begin
@@ -56,10 +63,12 @@ module SNG(
    always_ff@(posedge i_clk_sng or posedge i_rst_sng) begin
       if(i_rst_sng) begin
          current_state_r <= 0;
+         counter_r <= 0;
          start_fsm_r <= 0;
          stop_fsm_r <= 0;
       end else begin
          current_state_r <= current_state_w;
+         counter_r <= counter_w;
          start_fsm_r <= start_fsm_w;
          stop_fsm_r <= stop_fsm_w;
       end
