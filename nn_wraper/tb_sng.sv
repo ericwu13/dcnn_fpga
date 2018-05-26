@@ -29,7 +29,7 @@ module tb;
       start = 1;
       #CLK
       start = 0;
-		#(50*CLK)
+		#(8*CLK)
       stop = 1;
       #CLK
       stop = 0;
