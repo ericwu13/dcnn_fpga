@@ -15,6 +15,8 @@ module SNG(
    logic start_fsm_r, start_fsm_w,
          stop_fsm_r, stop_fsm_w;
    logic [1:0] sel;
+   logic gen_bit;
+   assign o_sn_bit = (counter_r == 15)? 0: gen_bit;
 
    FSM_16_state fsm(
       .i_clk_fsm(i_clk_sng),
@@ -37,6 +39,7 @@ module SNG(
       case(current_state_r)
          IDLE: begin
             if(i_start_sng) begin
+               current_state_w = GEN;
                start_fsm_w = 1;
                stop_fsm_w = 0;
                counter_w = 0;
