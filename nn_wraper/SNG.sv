@@ -50,12 +50,12 @@ module SNG(
             end
          end
          GEN: begin
-            counter_w = counter_r + 1;
             start_fsm_w = 0;
             if(i_stop_sng || counter_r == 15) begin
                current_state_w = IDLE;
                stop_fsm_w = 1;
             end else begin
+               counter_w = counter_r + 1;
                stop_fsm_w = stop_fsm_r;
             end
          end
