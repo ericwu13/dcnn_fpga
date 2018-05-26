@@ -29,7 +29,7 @@ module SNG(
    MUX_4to1 mux(
       .i_sel(sel),
       .i_data(i_x_bn),
-      .o_data(o_sn_bit)
+      .o_data(gen_bit)
    );
    always_comb begin
       counter_w = counter_r;
