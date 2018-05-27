@@ -39,7 +39,7 @@ module SNG(
       case(current_state_r)
          IDLE: begin
             if(i_start_sng) begin
-               current_state_w = WAIT;
+               current_state_w = GEN;
                start_fsm_w = 1;
                stop_fsm_w = 0;
                counter_w = 0;
@@ -49,7 +49,6 @@ module SNG(
                counter_w = counter_r;
             end
          end
-         WAIT: current_state_w = GEN
          GEN: begin
             start_fsm_w = 0;
             if(i_stop_sng || counter_r == 15) begin
@@ -92,6 +91,7 @@ module FSM_16_state(
 
    logic [3:0] counter_r, 
                counter_w;
+   logic start_w, start_r;
    assign o_sel = (counter_r == 0)? 3:
                   (counter_r == 1)? 2:
                   (counter_r == 2)? 3:
@@ -110,34 +110,27 @@ module FSM_16_state(
    always_comb begin
       current_state_w = current_state_r;
       counter_w = counter_r;
-      case(current_state_r)
-         IDLE: begin
-            if(i_start_fsm) begin
-               current_state_w = GEN;
-               counter_w = 0;
-            end else begin
-               current_state_w = current_state_r;
-               counter_w = counter_r;
-            end
+      if(i_start_fsm) begin
+         start_w = 1;
+      end 
+      if(start_r) begin
+         if(i_stop_fsm) begin
+            counter_w = 0;
+         end else begin
+            counter_w = counter_r + 1;
          end
-         GEN: begin
-            if(i_stop_fsm) begin
-               current_state_w = IDLE;
-            end else begin
-               counter_w = counter_r + 1;
-            end
-         end
-         default: current_state_w = IDLE;
-      endcase
+      end
    end
 
    always_ff@(posedge i_clk_fsm or posedge i_rst_fsm) begin
       if(i_rst_fsm) begin
          current_state_r <= IDLE;
          counter_r <= 0;
+         start_r <= 0
       end else begin
          current_state_r <= current_state_w;
          counter_r <= counter_w;
+         start_r <= start_w;
       end
    end
 

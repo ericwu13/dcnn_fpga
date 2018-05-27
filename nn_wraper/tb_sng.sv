@@ -4,7 +4,7 @@ module tb;
 	localparam HCLK = CLK/2;
 	logic clk, start, rst, stop;
    logic [3:0] x;
-   logic [7:0] streams;
+   logic [15:0] streams_w, streams_r;
    logic bit_stream;
    initial begin
       clk = 0;
@@ -29,20 +29,21 @@ module tb;
 		rst = 0;
       for(int i = 0; i < 16; ++i) begin
          @(posedge clk)
-         start <= 1;
-         stop <= 0;
-         x <= i;
+         streams_w = 0;
+         start = 1;
+         stop = 0;
+         x = i;
          $display("Binary number is : \"%2d\"", i);
          for(int j = 0; j < 16; ++j) begin
             @(posedge clk)
-            start <= 0;
-            streams[j] = bit_stream;
+            start = 0;
+            streams_w[15-j] = bit_stream;
          end
          @(posedge clk)
-         @(posedge clk)
-         $display("Stochastic number is : \"%16b\"", streams);
-         stop <= 1;
+         $display("Stochastic number is : \"%16b\"", streams_r);
+         stop = 1;
       end
 		$finish;
    end
+   always@(posedge clk) streams_r <= streams_w;
    endmodule
