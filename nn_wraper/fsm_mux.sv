@@ -26,10 +26,16 @@ module FSM_MUX(
    assign o_isgen = (current_state_r == GEN) ? 1: 0;
    assign o_sn_bit = final_gen_bit;
    always_comb begin
-      if(counter_r ==15)
-         final_gen_bit = 0;
+      if(counter_r == 15)
+         final_gen_bit[0] = 0;
+         final_gen_bit[1] = 0;
+         final_gen_bit[2] = 0;
+         final_gen_bit[3] = 0;
       else
-         final_gen_bit = gen_bit;
+         final_gen_bit[0] = gen_bit[0];
+         final_gen_bit[1] = gen_bit[1];
+         final_gen_bit[2] = gen_bit[2];
+         final_gen_bit[3] = gen_bit[3];
    end
 
    FSM_16_state fsm(

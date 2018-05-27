@@ -24,7 +24,7 @@ module MVM(
       .i_rst_fsm_mux(i_rst_fsm_mux),
       .i_x_bn(i_x_bn),
       .i_start_fsm_mux(i_start_mvm),
-      .i_stop_fsm_mux(fsm_mux_stop)
+      .i_stop_fsm_mux(fsm_mux_stop),
       .o_isgen(fsm_gen),
       .o_sn_bit(sn_bit)
    );
