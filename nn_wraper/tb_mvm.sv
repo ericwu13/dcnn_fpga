@@ -8,7 +8,7 @@ module tb;
    logic [3:0] w;
    initial begin
       for(int i = 0; i < 4; ++i)
-         x[i] = 15;
+         x[i] = 8;
       w = 8;
       clk = 0;
    end
@@ -36,8 +36,10 @@ module tb;
       @(posedge clk)
       start = 0;
       #(20*CLK)
-      $display("Accumulated result is %16b", result[0]);
+      $display("Accumulated result1 is %16b", result[0]);
+      $display("Accumulated result2 is %16b", result[1]);
+      $display("Accumulated result3 is %16b", result[2]);
+      $display("Accumulated result4 is %16b", result[3]);
 		$finish;
    end
-   always@(posedge clk) streams_r <= streams_w;
    endmodule
