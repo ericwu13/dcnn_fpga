@@ -28,17 +28,17 @@ module tb;
 		#(2*CLK)
 		rst = 0;
       #CLK
-      for(int i = 0; i < 15; ++i) begin
+      for(int i = 0; i < 16; ++i) begin
          start <= 1;
          stop <= 0;
          x <= i;
          $display("Binary number is : \"%2d\"", i);
-         for(int j = 0; j < 8; ++j) begin
+         for(int j = 0; j < 16; ++j) begin
             @(posedge clk)
             start <= 0;
-            streams[i] = bit_stream;
+            streams[j] = bit_stream;
          end
-         $display("Stochastic number is : \"%8x\"", streams);
+         $display("Stochastic number is : \"%16b\"", streams);
          stop <= 1;
       end
 		$finish;
