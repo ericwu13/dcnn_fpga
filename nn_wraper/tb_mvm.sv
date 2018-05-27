@@ -28,6 +28,7 @@ module tb;
    initial begin
 		$fsdbDumpfile("mvm.fsdb");
 		$fsdbDumpvars;
+      @(posedge clk)
 		rst = 1;
       @(posedge clk)
 		rst = 0;
