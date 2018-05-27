@@ -31,7 +31,7 @@ module tb;
       for(int i = 0; i < 15; ++i) begin
          start <= 1;
          stop <= 0;
-         x <= 0;
+         x <= i;
          $display("Binary number is : \"%2d\"", i);
          for(int j = 0; j < 8; ++j) begin
             start <= 0;
