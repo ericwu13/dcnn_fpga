@@ -126,7 +126,7 @@ module DCounter(
          counter_r <= 0;
          start_r <= 0;
       end else begin
-         counter_r <= counter_w
+         counter_r <= counter_w;
          start_r <= start_w;
       end
    end

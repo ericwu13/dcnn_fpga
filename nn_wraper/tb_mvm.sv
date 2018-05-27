@@ -2,7 +2,7 @@
 module tb;
 	localparam CLK = 10;
 	localparam HCLK = CLK/2;
-	logic clk, start, rst, stop, ismvm,
+	logic clk, start, rst, stop, ismvm;
    logic [3:0] x [3:0];
    logic [3:0] result [3:0];
    logic [3:0] w;
@@ -32,7 +32,7 @@ module tb;
       @(posedge clk)
 		rst = 0;
       @(posedge clk)
-      start = 1
+      start = 1;
       @(posedge clk)
       start = 0;
       #20*CLK
