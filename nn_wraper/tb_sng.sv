@@ -34,9 +34,9 @@ module tb;
          x <= i;
          $display("Binary number is : \"%2d\"", i);
          for(int j = 0; j < 8; ++j) begin
-            start <= 0;
             @(posedge clk)
-            streams[i] = bit_stream
+            start <= 0;
+            streams[i] = bit_stream;
          end
          $display("Stochastic number is : \"%8x\"", streams);
          stop <= 1;
