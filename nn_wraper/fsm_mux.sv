@@ -1,12 +1,18 @@
 `timescale 1ns/100ps
-// Transform input 4 bits "i_x_bn" to stochastic reprentation which are bit streams 16-bits stream
-module SNG(
-   input i_clk_sng,
-   input i_rst_sng,
-   input [3:0] i_x_bn,
-   input i_start_sng,
-   input i_stop_sng,
-   output o_sn_bit
+
+/*******************************************************************/
+/*** Transform input 4 4-bits i_x_bn to stochastic reprentation, ***/
+/*** which are bit streams 16-bits stream                        ***/
+/*******************************************************************/
+
+module FSM_MUX(
+   input i_clk_fsm_mux,
+   input i_rst_fsm_mux,
+   input [3:0] i_x_bn [3:0],
+   input i_start_fsm_mux,
+   input i_stop_fsm_mux,
+   output o_isgen,
+   output o_sn_bit [3:0]
 );
    parameter IDLE = 2'b00, GEN = 2'b01, WAIT= 2'b10;
    logic [1:0] current_state_r,
@@ -15,22 +21,42 @@ module SNG(
    logic start_fsm_r, start_fsm_w,
          stop_fsm_r, stop_fsm_w;
    logic [1:0] sel;
-   logic gen_bit;
+   logic gen_bit [3:0];
+   assign o_isgen = (current_state_r == GEN) ? 1: 0;
    assign o_sn_bit = (counter_r == 15)? 0: gen_bit;
 
    FSM_16_state fsm(
-      .i_clk_fsm(i_clk_sng),
-      .i_rst_fsm(i_rst_sng),
+      .i_clk_fsm(i_clk_fsm_mux),
+      .i_rst_fsm(i_rst_fsm_mux),
       .i_start_fsm(start_fsm_r),
       .i_stop_fsm(stop_fsm_r),
       .o_sel(sel)
    );
 
-   MUX_4to1 mux(
+   MUX_4to1 mux_1(
       .i_sel(sel),
-      .i_data(i_x_bn),
-      .o_data(gen_bit)
+      .i_data(i_x_bn[0]),
+      .o_data(gen_bit[0])
    );
+
+   MUX_4to1 mux_2(
+      .i_sel(sel),
+      .i_data(i_x_bn[1]),
+      .o_data(gen_bit[1])
+   );
+
+   MUX_4to1 mux_3(
+      .i_sel(sel),
+      .i_data(i_x_bn[2]),
+      .o_data(gen_bit[2])
+   );
+
+   MUX_4to1 mux_4(
+      .i_sel(sel),
+      .i_data(i_x_bn[3]),
+      .o_data(gen_bit[3])
+   );
+
    always_comb begin
       counter_w = counter_r;
       current_state_w = current_state_r;
@@ -38,7 +64,7 @@ module SNG(
       stop_fsm_w = stop_fsm_r;
       case(current_state_r)
          IDLE: begin
-            if(i_start_sng) begin
+            if(i_start_fsm_mux) begin
                current_state_w = GEN;
                start_fsm_w = 1;
                stop_fsm_w = 0;
@@ -51,7 +77,7 @@ module SNG(
          end
          GEN: begin
             start_fsm_w = 0;
-            if(i_stop_sng || counter_r == 15) begin
+            if(i_stop_fsm_mux || counter_r == 15) begin
                current_state_w = IDLE;
                stop_fsm_w = 1;
             end else begin
@@ -63,8 +89,8 @@ module SNG(
       endcase
    end
 
-   always_ff@(posedge i_clk_sng or posedge i_rst_sng) begin
-      if(i_rst_sng) begin
+   always_ff@(posedge i_clk_fsm_mux or posedge i_rst_fsm_mux) begin
+      if(i_rst_fsm_mux) begin
          current_state_r <= 0;
          counter_r <= 0;
          start_fsm_r <= 0;
