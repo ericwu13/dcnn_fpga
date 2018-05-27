@@ -3,7 +3,7 @@
 
 /************************************************/
 /*** Matrix multiplication on 4-bit-signed BN ***/
-/*** 4 xs multiplicate w
+/*** 4 xs multiplicate w                      ***/
 /************************************************/
 
 module MVM(

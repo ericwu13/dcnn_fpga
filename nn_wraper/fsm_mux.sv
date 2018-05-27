@@ -22,8 +22,15 @@ module FSM_MUX(
          stop_fsm_r, stop_fsm_w;
    logic [1:0] sel;
    logic gen_bit [3:0];
+   logic final_gen_bit[3:0];
    assign o_isgen = (current_state_r == GEN) ? 1: 0;
-   assign o_sn_bit = (counter_r == 15)? 0: gen_bit;
+   assign o_sn_bit = final_gen_bit;
+   always_comb begin
+      if(counter_r ==15)
+         final_gen_bit = 0;
+      else
+         final_gen_bit = gen_bit;
+   end
 
    FSM_16_state fsm(
       .i_clk_fsm(i_clk_fsm_mux),
