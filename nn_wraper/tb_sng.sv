@@ -25,10 +25,10 @@ module tb;
 		$fsdbDumpfile("sng.fsdb");
 		$fsdbDumpvars;
 		rst = 1;
-		#(2*CLK)
+      @(posedge clk)
 		rst = 0;
-      #CLK
       for(int i = 0; i < 16; ++i) begin
+         @(posedge clk)
          start <= 1;
          stop <= 0;
          x <= i;
@@ -38,6 +38,8 @@ module tb;
             start <= 0;
             streams[j] = bit_stream;
          end
+         @(posedge clk)
+         @(posedge clk)
          $display("Stochastic number is : \"%16b\"", streams);
          stop <= 1;
       end

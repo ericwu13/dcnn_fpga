@@ -8,7 +8,7 @@ module SNG(
    input i_stop_sng,
    output o_sn_bit
 );
-   parameter IDLE = 2'b00, GEN = 2'b01, DONE = 2'b10;
+   parameter IDLE = 2'b00, GEN = 2'b01, WAIT= 2'b10;
    logic [1:0] current_state_r,
                current_state_w;
    logic [3:0] counter_r, counter_w;
@@ -39,7 +39,7 @@ module SNG(
       case(current_state_r)
          IDLE: begin
             if(i_start_sng) begin
-               current_state_w = GEN;
+               current_state_w = WAIT;
                start_fsm_w = 1;
                stop_fsm_w = 0;
                counter_w = 0;
@@ -49,6 +49,7 @@ module SNG(
                counter_w = counter_r;
             end
          end
+         WAIT: current_state_w = GEN
          GEN: begin
             start_fsm_w = 0;
             if(i_stop_sng || counter_r == 15) begin
