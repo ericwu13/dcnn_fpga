@@ -110,6 +110,7 @@ module FSM_16_state(
    always_comb begin
       current_state_w = current_state_r;
       counter_w = counter_r;
+      start_w = start_r;
       if(i_start_fsm) begin
          start_w = 1;
       end 
@@ -126,7 +127,7 @@ module FSM_16_state(
       if(i_rst_fsm) begin
          current_state_r <= IDLE;
          counter_r <= 0;
-         start_r <= 0
+         start_r <= 0;
       end else begin
          current_state_r <= current_state_w;
          counter_r <= counter_w;
