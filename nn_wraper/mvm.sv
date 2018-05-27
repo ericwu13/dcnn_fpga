@@ -64,6 +64,7 @@ module MVM(
       .o_acc_result(o_wx_result[3])
    );
 
+endmodule
 module UpDCounter(
    input i_clk_udc,
    input i_rst_udc,
