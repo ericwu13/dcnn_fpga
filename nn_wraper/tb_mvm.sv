@@ -35,8 +35,8 @@ module tb;
       start = 1;
       @(posedge clk)
       start = 0;
-      #20*CLK
-      $display("%16b", result[0]);
+      #(20*CLK)
+      $display("Accumulated result is %16b", result[0]);
 		$finish;
    end
    always@(posedge clk) streams_r <= streams_w;
