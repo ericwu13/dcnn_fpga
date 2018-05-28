@@ -23,7 +23,8 @@ module FSM_MUX(
    logic [1:0] sel;
    logic gen_bit [3:0];
    logic final_gen_bit[3:0];
-   assign o_isgen = (current_state_r == GEN) ? 1: 0;
+   logic gen_w, gen_r
+   assign o_isgen = gen_r;
    assign o_sn_bit = final_gen_bit;
    always_comb begin
       if(counter_r == 15) begin
@@ -76,6 +77,7 @@ module FSM_MUX(
       current_state_w = current_state_r;
       start_fsm_w = start_fsm_r;
       stop_fsm_w = stop_fsm_r;
+      gen_w = gen_r;
       case(current_state_r)
          IDLE: begin
             if(i_start_fsm_mux) begin
@@ -83,6 +85,7 @@ module FSM_MUX(
                start_fsm_w = 1;
                stop_fsm_w = 0;
                counter_w = 0;
+               gen_w = 1;
             end else begin
                stop_fsm_w = stop_fsm_r;
                start_fsm_w = start_fsm_r;
@@ -94,6 +97,7 @@ module FSM_MUX(
             if(i_stop_fsm_mux || counter_r == 15) begin
                current_state_w = IDLE;
                stop_fsm_w = 1;
+               gen_w = 0;
             end else begin
                counter_w = counter_r + 1;
                stop_fsm_w = stop_fsm_r;
@@ -109,11 +113,13 @@ module FSM_MUX(
          counter_r <= 0;
          start_fsm_r <= 0;
          stop_fsm_r <= 0;
+         gen_r <= 0;
       end else begin
          current_state_r <= current_state_w;
          counter_r <= counter_w;
          start_fsm_r <= start_fsm_w;
          stop_fsm_r <= stop_fsm_w;
+         gen_r <= gen_w;
       end
    end
 endmodule
