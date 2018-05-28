@@ -30,6 +30,7 @@ module tb;
 		$fsdbDumpvars;
       @(posedge clk)
 		rst = 1;
+      stop = 0;
       @(posedge clk)
 		rst = 0;
       @(posedge clk)
