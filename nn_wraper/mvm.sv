@@ -18,8 +18,14 @@ module MVM(
 
    logic fsm_mux_stop, fsm_gen;
    logic tmp [3:0], sn_bit [3:0];
-   assign sn_bit = (fsm_gen == 1)? tmp: 0;
    assign o_ismvm = fsm_gen;
+   always_comb begin
+      if(fsm_gen) begin
+         sn_bit = tmp;
+      end else begin
+         sn_bit = 0;
+      end
+   end
    FSM_MUX fsm_mux(
       .i_clk_fsm_mux(i_clk_mvm),
       .i_rst_fsm_mux(i_rst_mvm),
@@ -27,7 +33,7 @@ module MVM(
       .i_start_fsm_mux(i_start_mvm),
       .i_stop_fsm_mux(fsm_mux_stop),
       .o_isgen(fsm_gen),
-      .o_sn_bit(sn_bit)
+      .o_sn_bit(tmp)
    );
    DCounter dcounter(
       .i_clk_dc(i_clk_mvm),
