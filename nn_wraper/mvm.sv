@@ -23,7 +23,10 @@ module MVM(
       if(fsm_gen) begin
          sn_bit = tmp;
       end else begin
-         sn_bit = 0;
+         sn_bit[0] = 0;
+         sn_bit[1] = 0;
+         sn_bit[2] = 0;
+         sn_bit[3] = 0;
       end
    end
    FSM_MUX fsm_mux(
