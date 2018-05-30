@@ -31,7 +31,7 @@ module MVM(
    DCounter dcounter(
       .i_clk_dc(i_clk_mvm),
       .i_rst_dc(i_rst_mvm),
-      .i_start_dc(i_start_mvm),
+      .i_start_dc(fsm_gen),
       .i_w_dc(i_w_mvm),
       .o_count(fsm_mux_stop)
    );
@@ -75,7 +75,6 @@ module UpDCounter(
    logic [3:0] counter_r, counter_w;
    assign o_acc_result = counter_r;
    always_comb begin
-      counter_w = counter_r;
       if(i_start_udc) begin
          if(i_sn_bit_udc) begin
             counter_w = counter_r + 1;
@@ -107,8 +106,6 @@ module DCounter(
    logic start_r, start_w;
    assign o_count = ~start_r;
    always_comb begin
-      counter_w = counter_r;
-      start_w = start_r;
       if(i_start_dc) begin
          start_w = 1;
       end

@@ -155,7 +155,7 @@ module FSM_16_state(
       start_w = start_r;
       if(i_start_fsm) begin
          start_w = 1;
-            counter_w = 0;
+         counter_w = 0;
       end 
       if(start_r) begin
          if(i_stop_fsm) begin
