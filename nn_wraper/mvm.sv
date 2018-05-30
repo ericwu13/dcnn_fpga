@@ -21,7 +21,7 @@ module MVM(
    assign o_ismvm = fsm_gen;
    FSM_MUX fsm_mux(
       .i_clk_fsm_mux(i_clk_mvm),
-      .i_rst_fsm_mux(i_rst_fsm_mux),
+      .i_rst_fsm_mux(i_rst_mvm),
       .i_x_bn(i_x_bn),
       .i_start_fsm_mux(i_start_mvm),
       .i_stop_fsm_mux(fsm_mux_stop),
