@@ -23,7 +23,7 @@ module FSM_MUX(
    logic [1:0] sel;
    logic gen_bit [3:0];
    logic final_gen_bit[3:0];
-   logic gen_w, gen_r
+   logic gen_w, gen_r;
    assign o_isgen = gen_r;
    assign o_sn_bit = final_gen_bit;
    always_comb begin
