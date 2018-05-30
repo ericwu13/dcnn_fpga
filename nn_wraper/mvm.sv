@@ -31,7 +31,7 @@ module MVM(
    DCounter dcounter(
       .i_clk_dc(i_clk_mvm),
       .i_rst_dc(i_rst_mvm),
-      .i_start_dc(fsm_gen),
+      .i_start_dc(i_start_mvm),
       .i_w_dc(i_w_mvm),
       .o_count(fsm_mux_stop)
    );
