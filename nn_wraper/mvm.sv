@@ -82,7 +82,7 @@ module UpDCounter(
             counter_w = counter_r - 1;
          end
       end else begin
-         counter_w = counter_r;
+         counter_w = 0;
       end
    end
 
