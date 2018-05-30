@@ -17,7 +17,8 @@ module MVM(
 );
 
    logic fsm_mux_stop, fsm_gen;
-   logic sn_bit [3:0];
+   logic tmp [3:0], sn_bit [3:0];
+   assign sn_bit = (fsm_gen == 1)? tmp: 0;
    assign o_ismvm = fsm_gen;
    FSM_MUX fsm_mux(
       .i_clk_fsm_mux(i_clk_mvm),
