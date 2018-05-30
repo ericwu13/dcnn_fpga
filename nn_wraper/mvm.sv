@@ -109,18 +109,18 @@ module DCounter(
       if(i_start_dc) begin
          start_w = 1;
       end else begin
-         start_w = start_r;
-      end
-      if(start_r) begin
-         if(counter_r < i_w_dc) begin
-            counter_w = counter_r + 1;
+         if(start_r) begin
+            if(counter_r < i_w_dc) begin
+               start_w = start_r;
+               counter_w = counter_r + 1;
+            end else begin
+               start_w = 0;
+               counter_w = 0;
+            end
          end else begin
-            start_w = 0;
-            counter_w = 0;
+            counter_w = counter_r;
+            start_w = start_r;
          end
-      end else begin
-         counter_w = counter_r;
-         start_w = start_r;
       end
    end
    always_ff@(posedge i_clk_dc or posedge i_rst_dc) begin
