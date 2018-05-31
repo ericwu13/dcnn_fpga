@@ -107,7 +107,7 @@ module FSM_MUX(
       endcase
    end
 
-   always_ff@(posedge i_clk_fsm_mux or posedge i_rst_fsm_mux) begin
+   always_ff@(posedge i_clk_fsm_mux or posedge i_rst_fsm_mux or posedge i_start_fsm_mux or posedge i_stop_fsm_mux) begin
       if(i_rst_fsm_mux) begin
          current_state_r <= 0;
          counter_r <= 0;
@@ -135,21 +135,21 @@ module FSM_16_state(
    logic [3:0] counter_r, 
                counter_w;
    logic start_w, start_r;
-   assign o_sel = (counter_r == 0)? 3:
-                  (counter_r == 1)? 2:
-                  (counter_r == 2)? 3:
-                  (counter_r == 3)? 1:
-                  (counter_r == 4)? 3:
-                  (counter_r == 5)? 2:
-                  (counter_r == 6)? 3:
-                  (counter_r == 7)? 0:
-                  (counter_r == 8)? 3:
-                  (counter_r == 9)? 2:
-                  (counter_r == 10)? 3:
-                  (counter_r == 11)? 1:
-                  (counter_r == 12)? 3:
-                  (counter_r == 13)? 2:
-                  (counter_r == 14)? 3:2;
+   assign o_sel = (counter_w == 0)? 3:
+                  (counter_w == 1)? 2:
+                  (counter_w == 2)? 3:
+                  (counter_w == 3)? 1:
+                  (counter_w == 4)? 3:
+                  (counter_w == 5)? 2:
+                  (counter_w == 6)? 3:
+                  (counter_w == 7)? 0:
+                  (counter_w == 8)? 3:
+                  (counter_w == 9)? 2:
+                  (counter_w == 10)? 3:
+                  (counter_w == 11)? 1:
+                  (counter_w == 12)? 3:
+                  (counter_w == 13)? 2:
+                  (counter_w == 14)? 3:2;
    always_comb begin
       if(i_start_fsm) begin
          start_w = 1;
@@ -169,7 +169,7 @@ module FSM_16_state(
       end
    end
 
-   always_ff@(posedge i_clk_fsm or posedge i_rst_fsm or posedge i_stop_fsm) begin
+   always_ff@(posedge i_clk_fsm or posedge i_rst_fsm or posedge i_stop_fsm or posedge i_stop_fsm) begin
       if(i_rst_fsm) begin
          counter_r <= 0;
          start_r <= 0;

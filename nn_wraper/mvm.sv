@@ -82,9 +82,11 @@ module UpDCounter(
    input i_sn_bit_udc,
    output [3:0] o_acc_result
 );
+   logic bit_w, bit_r;
    logic [3:0] counter_r, counter_w;
    assign o_acc_result = counter_r;
    always_comb begin
+      counter_w = counter_r;
       if(i_start_udc) begin
          if(i_sn_bit_udc) begin
             counter_w = counter_r + 1;
@@ -99,8 +101,10 @@ module UpDCounter(
    always_ff@(posedge i_clk_udc or posedge i_rst_udc) begin
       if(i_rst_udc) begin
          counter_r <= 0;
+         bit_r <= 0;
       end else begin
          counter_r <= counter_w;
+         bit_r <= bit_w
       end
    end
 endmodule
@@ -116,11 +120,13 @@ module DCounter(
    logic start_r, start_w;
    assign o_count = ~start_r;
    always_comb begin
+      start_w = start_r;
+      counter_w = counter_r;
       if(i_start_dc) begin
          start_w = 1;
       end else begin
          if(start_r) begin
-            if(counter_r < i_w_dc) begin
+            if(counter_r != i_w_dc) begin
                start_w = start_r;
                counter_w = counter_r + 1;
             end else begin
@@ -133,7 +139,7 @@ module DCounter(
          end
       end
    end
-   always_ff@(posedge i_clk_dc or posedge i_rst_dc) begin
+   always_ff@(posedge i_clk_dc or posedge i_rst_dc or posedge i_start_dc) begin
       if(i_rst_dc) begin
          counter_r <= 0;
          start_r <= 0;
