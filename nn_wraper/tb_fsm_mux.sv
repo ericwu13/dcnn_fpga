@@ -12,17 +12,17 @@ module tb;
 	always #HCLK clk = ~clk;
 
 
-   SNG sng(
-      .i_clk_sng(clk),
-      .i_rst_sng(rst),
+   FSM_MUX fsm_mux(
+      .i_clk_fsm_mux(clk),
+      .i_rst_fsm_mux(rst),
       .i_x_bn(x),
-      .i_start_sng(start),
-      .i_stop_sng(stop),
+      .i_start_fsm_mux(start),
+      .i_stop_fsm_mux(stop),
       .o_sn_bit(bit_stream)
    );
 
    initial begin
-		$fsdbDumpfile("sng.fsdb");
+		$fsdbDumpfile("fsm_mux.fsdb");
 		$fsdbDumpvars;
 		rst = 1;
       @(posedge clk)
