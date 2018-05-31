@@ -1,18 +1,48 @@
 `timescale 1ns/100ps
+`include "mvm.sv"
 module tb;
 	localparam CLK = 10;
 	localparam HCLK = CLK/2;
 	logic clk, start, rst, stop, ismvm;
-   logic [3:0] x [3:0];
-   logic [3:0] result [3:0];
-   logic [3:0] w;
+   logic [`NUM_BIT-1:0] x [`DIM-1:0];
+   logic [`NUM_BIT-1:0] result_w [`DIM-1:0], result_r [`DIM-1:0], tmp [`DIM-1:0];
+   logic [`NUM_BIT-1:0] w;
+   logic [23:0] counter_w, counter_r;
    initial begin
-      for(int i = 0; i < 4; ++i)
-         x[i] = 8;
-      w = 8;
+      for(int i = 0; i < `DIM; ++i)
+         //x[i] = $urandom_range(2**(`NUM_BIT)-1);
+         x[i] = i+128;
+      //w = $urandom_range(2**(`NUM_BIT)-1);
+      w = 64;
       clk = 0;
    end
 	always #HCLK clk = ~clk;
+   always_comb begin
+      if(start) counter_w = 0;
+      else counter_w = counter_r + 1;
+      if(ismvm) begin
+         for(int i = 0; i < `DIM; ++i) begin
+            result_w[i] = tmp[i];
+         end
+      end else begin
+         for(int i = 0; i < `DIM; ++i) begin
+            result_w[i] = result_r[i];
+         end
+      end
+   end
+   always_ff@(posedge clk or posedge rst) begin
+      counter_r <= counter_w;
+      if(rst)  begin
+         for(int i = 0; i < `DIM; ++i) begin
+            result_r[i] <= 0;
+         end
+      end
+      else begin
+         for(int i = 0; i < `DIM; ++i) begin
+            result_r[i] <= result_w[i];
+         end
+      end
+   end
 
 
    MVM mvm(
@@ -22,7 +52,7 @@ module tb;
       .i_x_bn(x),
       .i_w_mvm(w),
       .o_ismvm(ismvm),
-      .o_wx_result(result)
+      .o_wx_result(tmp)
    );
 
    initial begin
@@ -37,11 +67,11 @@ module tb;
       start = 1;
       @(posedge clk)
       start = 0;
-      #(20*CLK)
-      $display("Accumulated result1 is %16b", result[0]);
-      $display("Accumulated result2 is %16b", result[1]);
-      $display("Accumulated result3 is %16b", result[2]);
-      $display("Accumulated result4 is %16b", result[3]);
+      @(negedge ismvm)
+      for(int i = 0; i < `DIM; ++i) begin
+         $display("%f * %f is %f", x[i] / 256.0, w / 256.0, result_r[i] / 256.0);
+      end
+      $display("Cycle costs: %3d", counter_w);
 		$finish;
    end
    endmodule

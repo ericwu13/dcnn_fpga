@@ -1,42 +1,43 @@
 `timescale 1ns/100ps
+`define NUM_BIT 8
+`define DIM 3000
 
 /*******************************************************************/
 /*** Transform input 4 4-bits i_x_bn to stochastic reprentation, ***/
 /*** which are bit streams 16-bits stream                        ***/
 /*******************************************************************/
 
+
 module FSM_MUX(
    input i_clk_fsm_mux,
    input i_rst_fsm_mux,
-   input [3:0] i_x_bn [3:0],
+   input [`NUM_BIT-1:0] i_x_bn [`DIM-1:0],
    input i_start_fsm_mux,
    input i_stop_fsm_mux,
    output o_isgen,
-   output o_sn_bit [3:0]
+   output o_sn_bit [`DIM-1:0]
 );
    parameter IDLE = 2'b00, GEN = 2'b01, WAIT= 2'b10;
    logic [1:0] current_state_r,
                current_state_w;
-   logic [3:0] counter_r, counter_w;
+   logic [`NUM_BIT-1:0] counter_r, counter_w;
    logic start_fsm_r, start_fsm_w,
          stop_fsm_r, stop_fsm_w;
-   logic [1:0] sel;
-   logic gen_bit [3:0];
-   logic final_gen_bit[3:0];
+   logic [$clog2(`NUM_BIT) - 1:0] sel;
+   logic gen_bit [`DIM-1:0];
+   logic final_gen_bit[`DIM-1:0];
    logic gen_w, gen_r;
    assign o_isgen = gen_r;
    assign o_sn_bit = final_gen_bit;
    always_comb begin
-      if(counter_r == 15) begin
-         final_gen_bit[0] = 0;
-         final_gen_bit[1] = 0;
-         final_gen_bit[2] = 0;
-         final_gen_bit[3] = 0;
+      if(counter_r == (2**(`NUM_BIT) - 1)) begin
+         for(int i = 0; i < `DIM; ++i) begin
+            final_gen_bit[i] = 0;
+         end
       end else begin
-         final_gen_bit[0] = gen_bit[0];
-         final_gen_bit[1] = gen_bit[1];
-         final_gen_bit[2] = gen_bit[2];
-         final_gen_bit[3] = gen_bit[3];
+         for(int i = 0; i < `DIM; ++i) begin
+            final_gen_bit[i] = gen_bit[i];
+         end
       end
    end
 
@@ -47,7 +48,17 @@ module FSM_MUX(
       .i_stop_fsm(stop_fsm_r),
       .o_sel(sel)
    );
-
+   genvar i;
+   generate
+   for (i = 0; i < `DIM; i = i + 1) begin : gen_loop
+      MUX_4to1 mux(
+         .i_sel(sel),
+         .i_data(i_x_bn[i]),
+         .o_data(gen_bit[i])
+      );
+   end
+   endgenerate
+/*
    MUX_4to1 mux_1(
       .i_sel(sel),
       .i_data(i_x_bn[0]),
@@ -71,7 +82,7 @@ module FSM_MUX(
       .i_data(i_x_bn[3]),
       .o_data(gen_bit[3])
    );
-
+*/
    always_comb begin
       counter_w = counter_r;
       current_state_w = current_state_r;
@@ -94,7 +105,7 @@ module FSM_MUX(
          end
          GEN: begin
             start_fsm_w = 0;
-            if(i_stop_fsm_mux || counter_r == 15) begin
+            if(i_stop_fsm_mux || counter_r == (2**(`NUM_BIT) -1)) begin
                current_state_w = IDLE;
                stop_fsm_w = 1;
                gen_w = 0;
@@ -129,12 +140,15 @@ module FSM_16_state(
    input i_rst_fsm,
    input i_start_fsm,
    input i_stop_fsm,
-   output [1:0] o_sel
+   output [$clog2(`NUM_BIT):0] o_sel
 );
 
-   logic [3:0] counter_r, 
+   logic [`NUM_BIT-1:0] counter_r, 
                counter_w;
    logic start_w, start_r;
+   logic [$clog2(`NUM_BIT):0] sel;
+   assign o_sel = sel;
+   /*
    assign o_sel = (counter_w == 0)? 3:
                   (counter_w == 1)? 2:
                   (counter_w == 2)? 3:
@@ -150,6 +164,26 @@ module FSM_16_state(
                   (counter_w == 12)? 3:
                   (counter_w == 13)? 2:
                   (counter_w == 14)? 3:2;
+   */
+   always_comb begin
+      if(counter_w % 2 == 0) begin
+         sel = 7;
+      end else if(counter_w % 4 == 1)  begin
+         sel = 6;
+      end else if(counter_w % 8 == 3)  begin
+         sel = 5;
+      end else if(counter_w % 16 == 7)  begin
+         sel = 4;
+      end else if(counter_w % 32 == 15)  begin
+         sel = 3;
+      end else if(counter_w % 64 == 31)  begin
+         sel = 2;
+      end else if(counter_w % 128 == 63)  begin
+         sel = 1;
+      end else begin
+         sel = 0;
+      end 
+   end
    always_comb begin
       if(i_start_fsm) begin
          start_w = 1;
@@ -183,8 +217,8 @@ endmodule
 
 
 module MUX_4to1(
-   input [1:0] i_sel,
-   input [3:0] i_data,
+   input [$clog2(`NUM_BIT) -1:0] i_sel,
+   input [`NUM_BIT - 1:0] i_data,
    output o_data
 );
    assign o_data = i_data[i_sel+:1];
