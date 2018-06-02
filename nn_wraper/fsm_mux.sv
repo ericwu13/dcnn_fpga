@@ -1,6 +1,6 @@
 `timescale 1ns/100ps
 `define NUM_BIT 8
-`define DIM 3000
+`define DIM 10
 
 /*******************************************************************/
 /*** Transform input 4 4-bits i_x_bn to stochastic reprentation, ***/
@@ -58,31 +58,7 @@ module FSM_MUX(
       );
    end
    endgenerate
-/*
-   MUX_4to1 mux_1(
-      .i_sel(sel),
-      .i_data(i_x_bn[0]),
-      .o_data(gen_bit[0])
-   );
 
-   MUX_4to1 mux_2(
-      .i_sel(sel),
-      .i_data(i_x_bn[1]),
-      .o_data(gen_bit[1])
-   );
-
-   MUX_4to1 mux_3(
-      .i_sel(sel),
-      .i_data(i_x_bn[2]),
-      .o_data(gen_bit[2])
-   );
-
-   MUX_4to1 mux_4(
-      .i_sel(sel),
-      .i_data(i_x_bn[3]),
-      .o_data(gen_bit[3])
-   );
-*/
    always_comb begin
       counter_w = counter_r;
       current_state_w = current_state_r;

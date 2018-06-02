@@ -56,36 +56,6 @@ module MVM(
       );
    end
    endgenerate
-/*
-   UpDCounter updcounter_1(
-      .i_clk_udc(i_clk_mvm),
-      .i_rst_udc(i_rst_mvm),
-      .i_start_udc(fsm_gen),
-      .i_sn_bit_udc(sn_bit[0]),
-      .o_acc_result(o_wx_result[0])
-   );
-   UpDCounter updcounter_2(
-      .i_clk_udc(i_clk_mvm),
-      .i_rst_udc(i_rst_mvm),
-      .i_start_udc(fsm_gen),
-      .i_sn_bit_udc(sn_bit[1]),
-      .o_acc_result(o_wx_result[1])
-   );
-   UpDCounter updcounter_3(
-      .i_clk_udc(i_clk_mvm),
-      .i_rst_udc(i_rst_mvm),
-      .i_start_udc(fsm_gen),
-      .i_sn_bit_udc(sn_bit[2]),
-      .o_acc_result(o_wx_result[2])
-   );
-   UpDCounter updcounter_4(
-      .i_clk_udc(i_clk_mvm),
-      .i_rst_udc(i_rst_mvm),
-      .i_start_udc(fsm_gen),
-      .i_sn_bit_udc(sn_bit[3]),
-      .o_acc_result(o_wx_result[3])
-   );
-*/
 endmodule
 module UpDCounter(
    input i_clk_udc,
@@ -107,7 +77,7 @@ module UpDCounter(
             counter_w = counter_r;
          end
       end else begin
-         counter_w = 0;
+         counter_w = counter_r;
       end
    end
 
