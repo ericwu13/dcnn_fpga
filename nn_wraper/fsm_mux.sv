@@ -1,6 +1,6 @@
 `timescale 1ns/100ps
 `define NUM_BIT 8
-`define DIM 10
+`define DIM 3
 
 /*******************************************************************/
 /*** Transform input 4 4-bits i_x_bn to stochastic reprentation, ***/
@@ -23,7 +23,7 @@ module FSM_MUX(
    logic [`NUM_BIT-1:0] counter_r, counter_w;
    logic start_fsm_r, start_fsm_w,
          stop_fsm_r, stop_fsm_w;
-   logic [$clog2(`NUM_BIT) - 1:0] sel;
+   logic [$clog2(`NUM_BIT)-1:0] sel;
    logic gen_bit [`DIM-1:0];
    logic final_gen_bit[`DIM-1:0];
    logic gen_w, gen_r;
@@ -116,13 +116,13 @@ module FSM_16_state(
    input i_rst_fsm,
    input i_start_fsm,
    input i_stop_fsm,
-   output [$clog2(`NUM_BIT):0] o_sel
+   output [$clog2(`NUM_BIT)-1:0] o_sel
 );
 
    logic [`NUM_BIT-1:0] counter_r, 
                counter_w;
    logic start_w, start_r;
-   logic [$clog2(`NUM_BIT):0] sel;
+   logic [$clog2(`NUM_BIT)-1:0] sel;
    assign o_sel = sel;
    /*
    assign o_sel = (counter_w == 0)? 3:
@@ -193,7 +193,7 @@ endmodule
 
 
 module MUX_4to1(
-   input [$clog2(`NUM_BIT) -1:0] i_sel,
+   input [$clog2(`NUM_BIT)-1:0] i_sel,
    input [`NUM_BIT - 1:0] i_data,
    output o_data
 );

@@ -1,5 +1,6 @@
 `timescale 1ns/100ps
 `include "top_mvm.sv"
+
 module tb;
 	localparam CLK = 10;
 	localparam HCLK = CLK/2;
@@ -11,26 +12,22 @@ module tb;
    initial begin
       for(int i = 0; i < `NUM_VECTOR; ++i) begin
          for(int j = 0; j < `DIM; ++j) begin
-            x[i][j] = i+j+64;
-         w[i] = 64 + i;
+            x[i][j] = -64 -(i*j);
+            //x[i][j] = -64;
+         end
+         w[i] = -64-i*i;
+         //w[i] = -64;
       end
          //x[i] = $urandom_range(2**(`NUM_BIT)-1);
       //w = $urandom_range(2**(`NUM_BIT)-1);
+      $display("%8b", x[0][0]);
+      $display("%8b", w[0]);
       clk = 0;
    end
 	always #HCLK clk = ~clk;
    always_comb begin
       if(start) counter_w = 0;
       else counter_w = counter_r + 1;
-      if(ismvm) begin
-         for(int i = 0; i < `DIM; ++i) begin
-            result_w[i] = tmp[i];
-         end
-      end else begin
-         for(int i = 0; i < `DIM; ++i) begin
-            result_w[i] = result_r[i];
-         end
-      end
    end
    always_ff@(posedge clk or posedge rst) begin
       counter_r <= counter_w;
@@ -57,7 +54,7 @@ module tb;
    );
 
    initial begin
-		$fsdbDumpfile("mvm.fsdb");
+		$fsdbDumpfile("topMvm.fsdb");
 		$fsdbDumpvars;
       @(posedge clk)
 		rst = 1;
@@ -68,17 +65,21 @@ module tb;
       @(posedge clk)
       start = 0;
       @(negedge isAcc)
+      $display("=================");
       for(int i = 0; i < `DIM; ++i) begin
+         $write("[ ");
          for(int j = 0; j < `NUM_VECTOR; ++j) begin
             if(j == `NUM_VECTOR-1) begin
-               $write("%f %f  ", x[j][i] / 256. , w[j] / 256.);
+               $write("%f ] %f  ", signed'(x[j][i]) / 128.0 , signed'(w[i]) / 128.0 );
             end else begin
-               $write("%f ", x[j][i] / 256. );
+               $write("%f ", signed'(x[j][i]) / 128.0 );
             end
-            $write("%f\n", result_w[i] 256. );
          end
+         $write("%f\n", signed'(result_w[i]) / 128.0 );
       end
+      $display("=================");
       $display("Cycle costs: %3d", counter_w);
+      $display("=================");
 		$finish;
    end
    endmodule

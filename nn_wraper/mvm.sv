@@ -10,6 +10,7 @@ module MVM(
    input i_clk_mvm,
    input i_rst_mvm,
    input i_start_mvm,
+   input i_sign,
    input [`NUM_BIT-1:0] i_x_bn [`DIM-1:0],
    input [`NUM_BIT-1:0] i_w_mvm,
    output o_ismvm,
@@ -19,8 +20,7 @@ module MVM(
    logic fsm_mux_stop, fsm_gen;
    logic tmp [`DIM-1:0], sn_bit [`DIM-1:0];
    assign o_ismvm = fsm_gen;
-   always_comb begin
-      if(fsm_gen) begin
+   always_comb begin if(fsm_gen) begin
          sn_bit = tmp;
       end else begin
          for(int i = 0; i < `DIM; ++i) begin
@@ -52,6 +52,7 @@ module MVM(
          .i_rst_udc(i_rst_mvm),
          .i_start_udc(fsm_gen),
          .i_sn_bit_udc(sn_bit[i]),
+         .i_sign_w(i_sign),
          .o_acc_result(o_wx_result[i])
       );
    end
@@ -62,6 +63,7 @@ module UpDCounter(
    input i_rst_udc,
    input i_start_udc,
    input i_sn_bit_udc,
+   input i_sign_w,
    output [`NUM_BIT-1:0] o_acc_result
 );
    logic bit_w, bit_r;
@@ -69,12 +71,12 @@ module UpDCounter(
    assign o_acc_result = counter_r;
    always_comb begin
       counter_w = counter_r;
-      bit_w = i_sn_bit_udc;
+      bit_w = i_sign_w ^ i_sn_bit_udc;
       if(i_start_udc) begin
          if(bit_w) begin
             counter_w = counter_r + 1;
          end else begin
-            counter_w = counter_r;
+            counter_w = counter_r - 1;
          end
       end else begin
          counter_w = counter_r;
@@ -109,7 +111,7 @@ module DCounter(
          start_w = 1;
       end else begin
          if(start_w) begin
-            if(counter_r != i_w_dc) begin
+            if(counter_r != i_w_dc[`NUM_BIT-1:0]) begin
                start_w = start_r;
                counter_w = counter_r + 1;
             end else begin
