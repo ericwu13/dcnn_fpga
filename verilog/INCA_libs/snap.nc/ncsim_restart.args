@@ -1,0 +1,23 @@
+//
+// File created by:  ncverilog
+// Do not modify this file
+//
+-MESSAGES
++EMGRLOG
+ncverilog.log
+-XLSTIME
+1530709405
+-XLKEEP
+-XLMODE
+./INCA_libs/irun.lnx8664.12.20.nc
+-RUNMODE
+-CDSLIB
+./INCA_libs/irun.lnx8664.12.20.nc/cds.lib
+-HDLVAR
+./INCA_libs/irun.lnx8664.12.20.nc/hdl.var
+-XLNAME
+ncverilog
+-XLVERSION
+"TOOL:	ncverilog	12.20-s012"
+-XLNAME
+./INCA_libs/irun.lnx8664.12.20.nc/dclab-workstation_29560

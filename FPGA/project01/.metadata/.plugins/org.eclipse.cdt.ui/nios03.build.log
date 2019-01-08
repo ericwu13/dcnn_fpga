@@ -1,0 +1,40 @@
+02:49:05 **** Incremental Build of configuration Nios II for project nios03 ****
+make all 
+Info: Building ../nios03_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../nios03_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -I../nios03_bsp//HAL/inc -I../nios03_bsp/ -I../nios03_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx  -o obj/default/hello_world.o hello_world.c
+hello_world.c: In function 'mat_mul':
+hello_world.c:100:4: warning: missing braces around initializer [-Wmissing-braces]
+    alt_u32 matrix_32[3][4] = {0};
+    ^
+hello_world.c:100:4: warning: (near initialization for 'matrix_32[0]') [-Wmissing-braces]
+hello_world.c: In function 'main':
+hello_world.c:132:4: warning: missing braces around initializer [-Wmissing-braces]
+    alt_u8 matrix[8+1][4] = {0};
+    ^
+hello_world.c:132:4: warning: (near initialization for 'matrix[0]') [-Wmissing-braces]
+hello_world.c:143:4: warning: passing argument 1 of 'mat_mul' from incompatible pointer type
+    mat_mul(matrix, result);
+    ^
+hello_world.c:96:6: note: expected 'alt_u8 *' but argument is of type 'alt_u8 (*)[4]'
+ void mat_mul(alt_u8* matrix, alt_16* result) {
+      ^
+hello_world.c:145:4: warning: passing argument 1 of 'printResult' from incompatible pointer type
+    printResult(matrix, result);
+    ^
+hello_world.c:75:6: note: expected 'alt_u8 *' but argument is of type 'alt_u8 (*)[4]'
+ void printResult(alt_u8* matrix, alt_16* result) {
+      ^
+Info: Linking nios03.elf
+nios2-elf-g++  -T'../nios03_bsp//linker.x' -msys-crt0='../nios03_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../nios03_bsp/   -Wl,-Map=nios03.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx  -o nios03.elf obj/default/hello_world.o -lm -msys-lib=m
+nios2-elf-insert nios03.elf --thread_model hal --cpu_name nios2 --qsys true --simulation_enabled false --id 0 --sidp 0x101010a0 --timestamp 1530729851 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name qsysP01 --quartus_project_dir "C:/Users/team06/Desktop/project02/project01/project01/qsys" --sopcinfo C:/Users/team06/Desktop/project02/project01/project01/qsys/software/nios03_bsp/../../qsysP01.sopcinfo
+Info: (nios03.elf) 70 KBytes program size (code + initialized data).
+Info:              130995 KBytes free for stack + heap.
+Info: Creating nios03.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source nios03.elf >nios03.objdump
+[nios03 build complete]
+
+02:49:06 Build Finished (took 1s.626ms)
+

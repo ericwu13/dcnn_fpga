@@ -1,0 +1,142 @@
+#include "system.h"
+#include "./convolution.h"
+#include "./HAL/inc/nios2.h"
+#include <stdio.h>
+#include "io.h"
+
+static const int NUM_VECTOR = 8; // change to 128 actually
+static const int NUM_VECTOR_SHRINK = 8 >> 2; // due to 4 (32/8) data per transmission
+static const int NUM_DIM = 8; // change to 256 actually
+static const int NUM_DIM_SHRINK = 8 >> 1; // due to 2 (32/16) result per transmission
+
+static int bit_mask = 0x000000FF;
+
+void printBinary(int val2, int mode, int num_bit) {
+   /*
+    * Used to print 32 bits, e.g. 10000000_10000000_10000000_10000000
+    */
+   val2 = (val2 << (32 - num_bit));
+   unsigned char *p = (unsigned char*)&(val2) + 3;
+   int k = 0;
+   int i = 0;
+   for(k = 0; k < num_bit >> 3; k++) {
+      int val2 = *(p-k);
+      for (i = 7; i >= 0; i--) {
+      if(val2 & (1 << i))
+         printf("1");
+      else
+         printf("0");
+      }
+      if(k != (num_bit >> 3)-1)
+        printf("_");
+   }
+   if(mode == 1)
+     printf("_");
+   else printf("\n");
+};
+
+void transform_32to8(alt_u32 data_32, alt_u8 data_8[4] ) {
+   data_8[0] = data_32 & bit_mask;
+   data_8[1] = (data_32 >> 8) & bit_mask;
+   data_8[2] = (data_32 >> 16) & bit_mask;
+   data_8[3] = (data_32 >> 24) & bit_mask;
+};
+
+alt_u32 transform_8to32(alt_u8* data_8) {
+  alt_u32 data_32 = 0;
+  int i = 0;
+  for(i = 0; i < 4; ++i)
+    data_32 += (alt_u32)((((alt_u32)(*(data_8+i)))) << 8*i);
+  return data_32;
+}
+
+
+void printMatrix(alt_u8* matrix, int ROW, int COLUMN, int DEPTH) {
+	int row = 0, column = 0, dep = 0;
+	for(row = 0; row < ROW; row++){
+		for(column = 0; column < COLUMN; column++) {
+			for(dep = 0; dep < DEPTH; dep++) {
+				printSignBinary(*(matrix+row*COLUMN+column*DEPTH + dep));
+				printf(" ");
+			}
+		}
+		printf("\n");
+	}
+}
+void printResult(alt_u8* matrix, alt_16* result) {
+   int row = 0;
+   int column = 0;
+   int weight_counter = 0;
+   if(NUM_DIM >= NUM_VECTOR) {
+     for(row = 0; row < NUM_DIM; ++row) {
+    	printf("[ ");
+        for(column = 0; column < NUM_VECTOR; ++column) {
+        	printSignBinary((*(matrix + row*NUM_VECTOR + column)));
+        	printf(" ");
+        }
+        if(row >= NUM_VECTOR) printf("]         ");
+        else {
+        	printf("] ");//%3f", (double)(*(matrix+(NUM_DIM)*NUM_VECTOR+weight_counter)) / 128.0);
+        	printSignBinary(*(matrix+(NUM_DIM)*NUM_VECTOR+weight_counter));
+        }
+        weight_counter ++;
+        printf(" %f\n", (double)(*(result+row)) / 128.0);
+     }
+   }
+};
+
+void mat_mul(alt_u8* matrix, alt_16* result) {
+   // Assert the matrix size to NUM_DIM x NUM_VECTOR
+   printf("  Calculating matmul(%d x %d)...\n", NUM_DIM, NUM_VECTOR);
+   int row = 0, column = 0;
+   alt_u32 matrix_32[8+1][2] = {0};
+   for(row = 0; row < NUM_DIM+1; row++) {
+     for(column = 0; column < NUM_VECTOR_SHRINK; column++) {
+       matrix_32[row][column] = transform_8to32(matrix+NUM_VECTOR*row+4*column);
+       printf("matrix_32 (%d, %d) = ", row, column);
+       printBinary(matrix_32[row][column], 0, 32);
+       //printf("%d", matrix_32[row][column]);
+     }
+   }
+   for(row = 0; row < NUM_DIM+1; row++) {
+      for(column = 0; column < NUM_VECTOR_SHRINK; column++) {
+         IOWR(TEST_SLAVE_0_BASE, 0, matrix_32[row][column]);
+      }
+   }
+   alt_u32 tmp;
+   printf("  Collecting the result...\n");
+   for(row = 0; row < NUM_DIM_SHRINK; row ++) {
+      tmp = IORD(TEST_SLAVE_0_BASE, 0);
+      *(result + 2*row) = (alt_16)((tmp << 16) >> 16);
+      *(result + 2*row + 1) = (alt_16)(tmp >> 16);
+      //printBinary(tmp, 0, 32);
+      //printBinary(*(result + 2* row), 0, 16);
+      //printBinary(*(result + 2* row+1), 0, 16);
+   }
+};
+
+int main() {
+   printf("Hello from Nios II!\n");
+   alt_u8 matrix[8+1][8] = {0};
+   alt_16 result[8] = {0};
+   int row = 0;
+   int column = 0;
+   for(row = 0; row < NUM_DIM+1; row ++){
+      for(column = 0; column < NUM_VECTOR; column++){
+         if(row == NUM_DIM) {
+        	 matrix[row][column] = 130;
+         } else matrix[row][column] = 64+row+column;
+      }
+   }
+
+   mat_mul(matrix, result);
+   printf("Matrix Multiplication:\n");
+   printResult(matrix, result);
+   alt_u8* o_fmap[2][2][2] = {0};
+   matrix_to_imageCube(result, o_fmap, 2, 2, 2);
+
+   //alt_u8 flatten_mat[25][16] = {0};
+   //flatten_matrix(flatten_mat, matrix, 4, 4, 1, 8, 8);
+   //printMatrix(flatten_mat, 25, 16);
+   return 0;
+}

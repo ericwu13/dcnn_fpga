@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_common_sv_packages"
+   systemVerilogPackageName="avalon_vip_verbosity_pkg" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_sysid_qsys_0.vo"
+   type="VERILOG"
+   library="sysid_qsys_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_sw_input.v"
+   type="VERILOG"
+   library="sw_input" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_sdram_control.v"
+   type="VERILOG"
+   library="sdram_control" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_up_rs232_counters.v"
+   type="VERILOG"
+   library="rs232_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_up_rs232_in_deserializer.v"
+   type="VERILOG"
+   library="rs232_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_up_rs232_out_serializer.v"
+   type="VERILOG"
+   library="rs232_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_up_sync_fifo.v"
+   type="VERILOG"
+   library="rs232_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_rs232_0.v"
+   type="VERILOG"
+   library="rs232_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_onchip_memory2_0.v"
+   type="VERILOG"
+   library="onchip_memory2_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_nios2.v"
+   type="VERILOG"
+   library="nios2" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_led_output.v"
+   type="VERILOG"
+   library="led_output" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_jtag_uart_0.v"
+   type="VERILOG"
+   library="jtag_uart_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_hex0_output.v"
+   type="VERILOG"
+   library="hex0_output" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_altpll_0.vo"
+   type="VERILOG"
+   library="altpll_0" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm_0005.sv"
+   type="SYSTEM_VERILOG"
+   library="qsysP01_inst_sw_in_bfm" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm_0004.sv"
+   type="SYSTEM_VERILOG"
+   library="qsysP01_inst_sdram_w_bfm" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm_0003.sv"
+   type="SYSTEM_VERILOG"
+   library="qsysP01_inst_rs232_ex_bfm" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_avalon_reset_source.sv"
+   type="SYSTEM_VERILOG"
+   library="qsysP01_inst_reset_bfm" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm_0002.sv"
+   type="SYSTEM_VERILOG"
+   library="qsysP01_inst_led_out_bfm" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm.sv"
+   type="SYSTEM_VERILOG"
+   library="qsysP01_inst_hex_out_bfm" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/altera_avalon_clock_source.sv"
+   type="SYSTEM_VERILOG"
+   library="qsysP01_inst_clk_bfm" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01.v"
+   type="VERILOG"
+   library="qsysP01_inst" />
+ <file
+   path="qsys/testbench/qsysP01_tb/simulation/qsysP01_tb.v"
+   type="VERILOG" />
+ <topLevel name="qsysP01_tb" />
+ <deviceFamily name="cycloneive" />
+ <modelMap
+   controllerPath="qsysP01_tb.qsysP01_inst.onchip_memory2_0"
+   modelPath="qsysP01_tb.qsysP01_inst.onchip_memory2_0" />
+</simPackage>

@@ -1,0 +1,35 @@
+#include "./system.h"
+#include "./HAL/inc/altera_up_avalon_rs232_regs.h"
+#include "./HAL/inc/altera_up_avalon_rs232.h"
+#include "./HAL/inc/nios2.h"
+#include <stdio.h>
+
+int main()
+{
+	alt_up_rs232_dev* rs232_ptr ;
+	rs232_ptr = alt_up_rs232_dev* alt_up_rs232_open_dev("/dev/rs232_0")
+	alt_u8 data;
+	alt_u8* data_ptr = data;
+	alt_u8 par;
+	alt_u8* par_ptr = par;
+
+
+	unsigned int size = 64000;
+	int array[64000]={0};
+	int i=0;
+	int a = 1;
+	while(1){
+		a = alt_up_rs232_read_data(ptr ,data_ptr, par_ptr);
+		if(a==0){
+			i++;
+			printf("%d ",(*data));
+		}
+		if(i == 100) break;
+	}
+	printf("End %d",i);
+
+	//alt_up_rs232_enable_read_interrupt(ptr);
+
+	return 0;
+}
+

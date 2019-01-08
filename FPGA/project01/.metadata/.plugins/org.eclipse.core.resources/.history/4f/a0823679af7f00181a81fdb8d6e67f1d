@@ -1,0 +1,25 @@
+#include "system.h"
+#include "./convolution.h"
+#include <stdio.h>
+#include "io.h"
+
+static const int NUM_VECTOR = 128; // change to 128 actually
+static const int NUM_VECTOR_SHRINK = 8 >> 2; // due to 4 (32/8) data per transmission
+static const int NUM_DIM = 256; // change to 256 actually
+static const int NUM_DIM_SHRINK = 8 >> 1; // due to 2 (32/16) result per transmission
+
+static int bit_mask = 0x000000FF;
+
+int main() {
+   printf("Hello from Nios II!\n");
+   int row = 0;
+   int column = 0;
+   alt_u8 matrix [257][128] = {0};
+   for(row = 0; row < NUM_DIM+1; row++) {
+	   for(column = 0; column < NUM_VECTOR; column++)
+		   matrix[row][column] = 64;
+   }
+   printMatrix(matrix, 257, 256,1);
+   return 0;
+
+}

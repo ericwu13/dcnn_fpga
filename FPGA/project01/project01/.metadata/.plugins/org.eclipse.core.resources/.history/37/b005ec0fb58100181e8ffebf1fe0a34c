@@ -1,0 +1,306 @@
+
+#include "io.h"
+#include "./HAL/inc/altera_up_avalon_rs232_regs.h"
+#include "./HAL/inc/altera_up_avalon_rs232.h"
+#include "./HAL/inc/nios2.h"
+#include <stdio.h>
+#include "./convolution.h"
+static const int NUM_VECTOR = 128; // change to 128 actually
+static const int NUM_DIM = 256; // due to 4 (32/8) data per transmission
+static const int NUM_DIM_WRITE = (256+4) / 4; // change to 256 actually
+static const int NUM_DIM_SHRINK = 256 >> 1; // due to 2 (32/16) result per transmission
+
+static int bit_mask = 0x000000FF;
+
+#define READ_FIFO_EMPTY 0x0
+
+alt_u8 par;
+
+static int LABEL_NUM = 6;
+static int FC_UNITS = 864;
+static int FIRST_CONV = 10 * 10 * 1 * 16;
+static int SECOND_CONV = 5 * 5 * 16 * 16;
+static int DATA_SHAPE = 49 * 40;
+alt_u8 transform(alt_u8 data) {
+	if(data == 128)
+		return (alt_u8)0;
+	if((data >> 7) == 1)
+		data = (((data << 1) >> 1) ^ 0xFF)+1+128;
+	return data;
+}
+void read_event(alt_up_rs232_dev* rs232, alt_u8* w_data, int read_num){
+  alt_u8 read_FIFO_used = 0;
+  alt_u8 fail = 1;
+  alt_u8 data;
+  int count = 0;
+  while(1){
+    //read_FIFO_used = alt_up_rs232_get_used_space_in_read_FIFO(rs232_ptr);
+    fail = alt_up_rs232_read_data(rs232 , &data, &par);
+    if(!fail){
+      data = transform(data);
+      *(w_data + count) = data;
+      alt_up_rs232_disable_read_interrupt(rs232);
+      alt_up_rs232_write_data(rs232, 1);
+      alt_up_rs232_enable_read_interrupt(rs232);
+      count++;
+      //printf("Read num: %d\n",count);
+    }
+    if(count == read_num){
+      printf("Reading data successfully!!!\n");
+      break;
+    }
+  }
+}
+
+
+
+void printBinary(int val2, int mode, int num_bit) {
+   /*
+    * Used to print 32 bits, e.g. 10000000_10000000_10000000_10000000
+    */
+   val2 = (val2 << (32 - num_bit));
+   unsigned char *p = (unsigned char*)&(val2) + 3;
+   int k = 0;
+   int i = 0;
+   for(k = 0; k < num_bit >> 3; k++) {
+      int val2 = *(p-k);
+      for (i = 7; i >= 0; i--) {
+      if(val2 & (1 << i))
+         printf("1");
+      else
+         printf("0");
+      }
+      if(k != (num_bit >> 3)-1)
+        printf("_");
+   }
+   if(mode == 1)
+     printf("_");
+   else printf("\n");
+};
+
+void transform_32to8(alt_u32 data_32, alt_u8 data_8[4] ) {
+   data_8[0] = data_32 & bit_mask;
+   data_8[1] = (data_32 >> 8) & bit_mask;
+   data_8[2] = (data_32 >> 16) & bit_mask;
+   data_8[3] = (data_32 >> 24) & bit_mask;
+};
+
+
+
+
+//void printMatrix(alt_u8* matrix, int ROW, int COLUMN, int DEPTH, double precision) {
+//  int row = 0, column = 0, dep = 0;
+//  for(dep = 0; dep < DEPTH; dep ++) {
+//    printf("Dep %d: \n", dep);
+//    for(row = 0; row < ROW; row++){
+//      for(column = 0; column < COLUMN; column++) {
+//        //printf("%f",(double)(*(matrix+row*COLUMN*DEPTH+column*DEPTH + dep)) / precision);
+//    	printSignBinary(*(matrix+row*COLUMN*DEPTH+column*DEPTH + dep), precision);
+//        printf(" ");
+//      }
+//      printf("\n");
+//    }
+//  }
+//}
+void printResult(alt_u8* matrix, alt_16* result) {
+   int row = 0;
+   int column = 0;
+   int weight_counter = 0;
+   if(NUM_DIM >= NUM_VECTOR) {
+     for(row = 0; row < NUM_DIM; ++row) {
+      printf("[ ");
+        for(column = 0; column < NUM_VECTOR; ++column) {
+          printSignBinary((*(matrix + row*NUM_VECTOR + column)), 16);
+          printf(" ");
+        }
+        if(row >= NUM_VECTOR) printf("]         ");
+        else {
+          printf("] ");//%3f", (double)(*(matrix+(NUM_DIM)*NUM_VECTOR+weight_counter)) / 128.0);
+          printSignBinary(*(matrix+(NUM_DIM)*NUM_VECTOR+weight_counter), 128);
+        }
+        weight_counter ++;
+        printf(" %f\n", (double)(*(result+row)) / 16.0);
+     }
+   }
+};
+
+
+int main() {
+
+//     printf("Hello from Nios II!\n");
+//     alt_u8 matrix[8+1][4] = {0};
+//     alt_u8 data[2][2][1] = {0};
+//     alt_16 result[9] = {0};
+//     int row = 0;
+//     int column = 0;
+//     printf("ha ha ..........................\n");
+//     for(row = 0; row < 8+1; row ++){
+//        for(column = 0; column < 4; column++){
+//        	if(row == NUM_DIM) {
+//        		if(column > 1) matrix[row][column] = 140;
+//        		else matrix[row][column] = 130;//-row+column;
+//        	}
+//        	else {
+//        		if(row > 4 || column > 5) matrix[row][column] = 110;
+//        		else matrix[row][column] = 160;
+//        	}
+//        }
+//     }
+//     for(row = 0; row < 2; row ++){
+//        for(column = 0; column < 2; column++){
+//        	data[row][column][0] = 108;
+//        }
+//     }
+//     printf("fuck ..........................\n");
+//     printMatrix(matrix, 8, 4, 1, 16.0);
+//     printMatrix(matrix[8], 2, 2, 1, 128.0);
+////     max_pooling(matrix, result, 9, 4, 1);
+//     fully_connencted(matrix, 9, 1, matrix[8], 2, 2, 1, result);
+////     printMatrix(result, 9, 1, 1, 16.0);
+////     mat_mul(matrix, result);
+////     printf("Matrix Multiplication:\n");
+//     for(row = 0; row < 9; row++)
+//   	   printf("%f\n", (double)(*(result+row)) / 16.0);
+////     printResult(matrix, result);
+//    return 0;
+  alt_u8 matrix[20][20] = {0};
+  alt_u8 filter[10][10][1][1] = {0};
+  int row = 0;
+  int column = 0;
+  printf("ha ha ..........................\n");
+  for(row = 0; row < 20; row ++){
+	for(column = 0; column < 20; column++){
+		matrix[row][column] = 12;
+	}
+  }
+  for(row = 0; row < 10; row ++){
+	for(column = 0; column < 10; column++){
+		filter[row][column][0][0] = 8;//+row+column;
+		filter[row][column][0][0] = 64;//+row+column;
+	}
+  }
+  alt_u8 flatten [121][100] = {0};
+  alt_16 output_mat[121][1] = {0};
+  alt_u8  con2_fmap[11][11][1] = {0};
+  flatten_matrix(flatten, matrix, 20, 20, 10, 10, 1);
+  //printMatrix(flatten, 121, 100, 1, 16);
+  conv(flatten, 11, 11, filter, 10, 10, 1, con2_fmap, output_mat);
+  printMatrix(con2_fmap, 11, 11, 1, 16);
+  return 0;
+
+//  alt_up_rs232_dev* rs232_ptr ;
+//  alt_up_rs232_dev rs232 ;
+//  rs232.base = RS232_0_BASE;
+//  rs232_ptr = &rs232;
+//
+//  //right
+//  IOWR(HEX4_BASE, 0, 127);
+//  IOWR(HEX3_BASE, 0, 127);
+//  IOWR(HEX2_BASE, 0, 127);
+//  IOWR(HEX1_BASE, 0, 127);
+//  IOWR(HEX0_BASE, 0, 127);
+//
+//
+//
+//  if(rs232_ptr == NULL) printf("Error\n");
+//  else printf("Open\n");
+//
+//  alt_up_rs232_enable_read_interrupt(rs232_ptr);
+//
+//  alt_u8 fc[6][864] = {0};
+//  alt_u8 first_conv[10][10][1][16] = {0};
+//  alt_u8 second_conv[5][5][16][16] = {0};
+//  alt_u8 spectrum[49][40] = {0};
+//
+//
+//
+//  /* Reading model */
+//
+//  read_event(rs232_ptr, &fc, FC_UNITS * LABEL_NUM);
+//  read_event(rs232_ptr, &first_conv, FIRST_CONV);
+//  read_event(rs232_ptr, &second_conv, SECOND_CONV);
+////  read_event(rs232_ptr, &spectrum, DATA_SHAPE);
+//  int i =0, j = 0, k = 0, w = 0;
+//  for(i = 0; i < 5; ++i) {
+//	  for(j = 0; j < 5; ++j) {
+//		  for( k = 0; k < 16; k++) {
+//			  for(w = 0; w < 16; ++w) {
+//				  printSignBinary(second_conv[i][j][k][w], 128);
+//				  printf("\n");
+//			  }
+//		  }
+//	  }
+//  }
+
+  /* Testing model parameters */
+
+//  printf("fc element 0 : %d\n", (int)fc[0][0]);
+//  printSignBinary(fc[0][0], 128);
+//  printf("\n");
+//  printf("fc element 16 : %d\n", (int)fc[2][4]);
+//  printSignBinary(fc[2][4], 128);
+//  printf("\n");
+//  printf("first conv element 0 : %d\n", (int)first_conv[0][0][0][0]);
+//  printSignBinary(first_conv[0][0][0][0], 128);
+//  printf("\n");
+//  printf("first conv element 16 : %d\n", (int)first_conv[0][1][0][0]);
+//  printSignBinary(first_conv[0][1][0][0], 128);
+//  printf("\n");
+//  printf("second conv element 0 : %d\n", (int)second_conv[0][0][0][0]);
+//  printSignBinary(second_conv[0][0][0][0], 128);
+//  printf("\n");
+//  printf("second conv element 16 : %d\n", (int)second_conv[0][0][1][0]);
+//  printSignBinary(second_conv[0][0][1][0], 128);
+//  printf("\n");
+
+//  printf("\n");
+//  int count = 0;
+//  int row = 0;
+//  while(count < 10) {
+//	alt_u8 conv_finish_fmap[9][6][16] = {0};
+//	alt_16 final_fmap[6] = {0};
+//	printf("Reading data NUM: %d\n", count);
+//	count ++;
+//	read_event(rs232_ptr, &spectrum, DATA_SHAPE);
+////	printMatrix(spectrum, 49, 40, 1, 16);
+////	printf("data element 0 : %d\n", (int)spectrum[0][0]);
+////	printSignBinary(spectrum[0][0], 16);
+////	printf("\n");
+////	printf("data element 49 : %d\n", (int)spectrum[1][9]);
+////	printSignBinary(spectrum[1][9], 16);
+////	printf("\n");
+//	printf("==================== predicting ====================\n");
+//	total_conv(first_conv, second_conv, spectrum, conv_finish_fmap);
+//	fully_connencted(fc, 6, 1, conv_finish_fmap, 54, 16, 1, final_fmap);
+//	printf("Collecting results...\n");
+//	for(row = 0; row < 6; ++row)
+//		printf("%f ", (double)final_fmap[row] / 16.0);
+//	printf("\nend\n");
+	//dog
+//	IOWR(HEX[4], 0, 127);
+//	IOWR(HEX[3], 0, 127);
+//	IOWR(HEX[2], 0, 33);
+//	IOWR(HEX[1], 0, 35);
+//	IOWR(HEX[0], 0, 16);
+
+	//stop
+//	IOWR(HEX[4], 0, 127);
+//	IOWR(HEX[3], 0, 54);
+//	IOWR(HEX[2], 0, 7);
+//	IOWR(HEX[1], 0, 35);
+//	IOWR(HEX[0], 0, 12);
+
+	//left
+//	IOWR(HEX4_BASE, 0, 127);
+//	IOWR(HEX3_BASE, 0, 71);
+//	IOWR(HEX2_BASE, 0, 6);
+//	IOWR(HEX1_BASE, 0, 14);
+//	IOWR(HEX0_BASE, 0, 7);
+
+	//right
+
+//  }
+//	printMatrix(conv_finish_fmap, 18, 13, 16);
+//
+  return 0;
+}

@@ -1,0 +1,69 @@
+#include "./system.h"
+#include "./rs232/HAL/inc/altera_up_avalon_rs232_regs.h"
+#include "./rs232/HAL/inc/altera_up_avalon_rs232.h"
+#include "./HAL/inc/nios2.h"
+#include <stdio.h>
+
+
+
+int main()
+{
+	/*
+	alt_up_rs232_dev _rs232;
+	_rs232.base = RS232_0_BASE;
+	alt_up_rs232_dev * ptr = &_rs232;
+*/
+	unsigned int size = 64000;
+	int array[64000]={0};
+	int i=0;
+	int rx_ok = 0;
+	char rx_char;
+
+	//alt_up_rs232_enable_read_interrupt(ptr);
+	while(1){
+		IOWR_ALT_UP_RS232_ADDR(RS232_0_BASE, 0, 1);
+	}
+
+
+/*
+	char data;
+	while(1){
+		data = IORD_ALT_UP_RS232_DATA(RS232_0_BASE);
+		if((int)data==1) break;
+	}
+	while(1){
+		data = IORD_ALT_UP_RS232_DATA(RS232_0_BASE);
+		array[i] = (int)data ;
+		printf("%d\n",array[i]);
+		if(array[i]==0) break;
+		i++;
+	}
+	printf("end......%d",i);
+
+*/
+
+/*
+	while(1){
+
+		rx_char = IORD_ALTERA_AVALON_UART_STATUS(RS232_BASE);
+		rx_ok = (int)rx_char & 128;
+
+		if(rx_ok == 128){
+			data = IORD_ALTERA_AVALON_UART_RXDATA(RS232_BASE);
+			array[i] = (int)data;
+			IOWR_ALTERA_AVALON_UART_TXDATA(RS232_BASE, 1);
+			i++;
+		}
+		else IOWR_ALTERA_AVALON_UART_TXDATA(RS232_BASE, 0);
+
+		if(i==size) break;
+
+	}
+
+	printf("Final\n");
+	for(i=0 ; i<size ; ++i){
+		printf("%d\n",array[i]);
+	}
+*/
+	return 0;
+}

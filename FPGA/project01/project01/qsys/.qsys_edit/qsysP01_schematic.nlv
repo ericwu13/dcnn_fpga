@@ -1,0 +1,33 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst qsysP01.sdram_control -pg 1 -lvl 3 -y 710
+preplace inst qsysP01 -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst qsysP01.nios2.reset_bridge -pg 1
+preplace inst qsysP01.nios2 -pg 1 -lvl 2 -y 220
+preplace inst qsysP01.mvm_controller_0 -pg 1 -lvl 4 -y 250
+preplace inst qsysP01.led_output -pg 1 -lvl 3 -y 530
+preplace inst qsysP01.nios2.cpu -pg 1
+preplace inst qsysP01.rs232_0 -pg 1 -lvl 3 -y 30
+preplace inst qsysP01.altpll_0 -pg 1 -lvl 3 -y 310
+preplace inst qsysP01.jtag_uart_0 -pg 1 -lvl 3 -y 150
+preplace inst qsysP01.onchip_memory2_0 -pg 1 -lvl 3 -y 630
+preplace inst qsysP01.clk_0 -pg 1 -lvl 1 -y 100
+preplace inst qsysP01.sw_input -pg 1 -lvl 3 -y 810
+preplace inst qsysP01.nios2.clock_bridge -pg 1
+preplace inst qsysP01.sysid_qsys_0 -pg 1 -lvl 3 -y 450
+preplace inst qsysP01.hex0_output -pg 1 -lvl 3 -y 910
+preplace netloc EXPORT<net_container>qsysP01</net_container>(SLAVE)clk_0.clk_in,(SLAVE)qsysP01.clk) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>qsysP01</net_container>(SLAVE)rs232_0.avalon_rs232_slave,(SLAVE)led_output.s1,(SLAVE)onchip_memory2_0.s1,(SLAVE)sdram_control.s1,(SLAVE)sysid_qsys_0.control_slave,(SLAVE)sw_input.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)hex0_output.s1,(MASTER)nios2.instruction_master,(SLAVE)altpll_0.pll_slave,(SLAVE)nios2.debug_mem_slave,(MASTER)nios2.data_master,(SLAVE)mvm_controller_0.avalon_slave_0) 1 1 3 330 180 730 260 N
+preplace netloc EXPORT<net_container>qsysP01</net_container>(SLAVE)rs232_0.external_interface,(SLAVE)qsysP01.rs232_ex) 1 0 3 NJ 80 NJ 80 NJ
+preplace netloc FAN_OUT<net_container>qsysP01</net_container>(MASTER)nios2.irq,(SLAVE)jtag_uart_0.irq,(SLAVE)rs232_0.interrupt) 1 2 1 690
+preplace netloc INTERCONNECT<net_container>qsysP01</net_container>(SLAVE)rs232_0.reset,(SLAVE)sdram_control.reset,(SLAVE)sw_input.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)mvm_controller_0.reset_sink,(SLAVE)altpll_0.inclk_interface_reset,(MASTER)clk_0.clk_reset,(MASTER)nios2.debug_reset_request,(SLAVE)jtag_uart_0.reset,(SLAVE)led_output.reset,(SLAVE)nios2.reset,(SLAVE)hex0_output.reset,(SLAVE)onchip_memory2_0.reset1) 1 1 3 270 160 710 300 N
+preplace netloc EXPORT<net_container>qsysP01</net_container>(SLAVE)qsysP01.sw_in,(SLAVE)sw_input.external_connection) 1 0 3 NJ 840 NJ 840 NJ
+preplace netloc EXPORT<net_container>qsysP01</net_container>(MASTER)altpll_0.c0,(MASTER)qsysP01.sdram_clk) 1 3 2 NJ 360 NJ
+preplace netloc EXPORT<net_container>qsysP01</net_container>(SLAVE)qsysP01.hex_out,(SLAVE)hex0_output.external_connection) 1 0 3 NJ 940 NJ 940 NJ
+preplace netloc EXPORT<net_container>qsysP01</net_container>(SLAVE)qsysP01.sdram_w,(SLAVE)sdram_control.wire) 1 0 3 NJ 780 NJ 780 NJ
+preplace netloc EXPORT<net_container>qsysP01</net_container>(SLAVE)qsysP01.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>qsysP01</net_container>(MASTER)clk_0.clk,(SLAVE)altpll_0.inclk_interface) 1 1 2 290 360 NJ
+preplace netloc FAN_OUT<net_container>qsysP01</net_container>(SLAVE)jtag_uart_0.clk,(SLAVE)onchip_memory2_0.clk1,(MASTER)altpll_0.c1,(SLAVE)nios2.clk,(SLAVE)rs232_0.clk,(SLAVE)sysid_qsys_0.clk,(SLAVE)sw_input.clk,(SLAVE)led_output.clk,(SLAVE)mvm_controller_0.clock_sink,(SLAVE)sdram_control.clk,(SLAVE)hex0_output.clk) 1 1 3 310 140 750 280 1030
+preplace netloc EXPORT<net_container>qsysP01</net_container>(SLAVE)led_output.external_connection,(SLAVE)qsysP01.led_out) 1 0 3 NJ 560 NJ 560 NJ
+levelinfo -pg 1 0 60 1280
+levelinfo -hier qsysP01 70 100 450 840 1060 1190

@@ -1,0 +1,403 @@
+Info: Starting: Create testbench Qsys system
+Info: C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/qsysP01.ipx
+Info: qsys-generate C:\Users\team06\Desktop\project02\project01\project01\qsys\qsysP01.qsys --testbench=STANDARD --output-directory=C:\Users\team06\Desktop\project02\project01\project01\qsys --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading qsys/qsysP01.qsys
+Progress: Reading input file
+Progress: Adding altpll_0 [altpll 15.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding hex0_output [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex0_output
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 15.0]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding led_output [altera_avalon_pio 15.0]
+Progress: Parameterizing module led_output
+Progress: Adding nios2 [altera_nios2_gen2 15.0]
+Progress: Parameterizing module nios2
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding rs232_0 [altera_up_avalon_rs232 15.0]
+Progress: Parameterizing module rs232_0
+Progress: Adding sdram_control [altera_avalon_new_sdram_controller 15.0]
+Progress: Parameterizing module sdram_control
+Progress: Adding sw_input [altera_avalon_pio 15.0]
+Progress: Parameterizing module sw_input
+Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 15.0]
+Progress: Parameterizing module sysid_qsys_0
+Progress: Adding test_slave_0 [test_slave 1.0]
+Progress: Parameterizing module test_slave_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsysP01.sw_input: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: qsysP01.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: qsysP01.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+Warning: qsysP01.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsysP01.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsysP01.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: ip-generate succeeded.
+Info: Loading IP catalog for testbench.
+Progress: 
+Progress: 
+Progress: 
+Progress: (2) searching C:/altera/15.0/quartus/sopc_builder/bin/root_components.ipx (ipx file)
+Info: Reading index C:\altera\15.0\quartus\sopc_builder\bin\root_components.ipx
+Info: C:\altera\15.0\quartus\sopc_builder\bin\root_components.ipx: Loading now from components.ipx
+Info: Reading index C:\altera\15.0\quartus\sopc_builder\bin\ip_component_categories.ipx
+Info: C:\altera\15.0\quartus\sopc_builder\bin\ip_component_categories.ipx described 0 plugins, 0 paths, in 0.00 seconds
+Info: C:/altera/15.0/quartus/sopc_builder/bin/ip_component_categories.ipx matched 1 files in 0.00 seconds
+Info: C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/ip/**/* matched 0 files in 0.00 seconds
+Info: Reading index C:\Users\team06\Desktop\project02\project01\project01\qsys\qsys\testbench\qsysP01.ipx
+Progress: Loading qsys/mvm_controller_hw.tcl
+Progress: Loading qsys/new_component_hw.tcl
+Progress: Loading qsys/qsysP01.qsys
+Progress: Loading qsys/test_slave_hw.tcl
+Info: C:/Users/team06/Desktop/project02/project01/project01/qsys/* matched 14 files in 0.05 seconds
+Info: C:/Users/team06/Desktop/project02/project01/project01/qsys/ip/**/* matched 0 files in 0.00 seconds
+Info: C:/Users/team06/Desktop/project02/project01/project01/qsys/*/* matched 15 files in 0.00 seconds
+Info: C:\Users\team06\Desktop\project02\project01\project01\qsys\qsys\testbench\qsysP01.ipx described 0 plugins, 3 paths, in 0.05 seconds
+Info: C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/* matched 4 files in 0.06 seconds
+Info: C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/*/* matched 0 files in 0.00 seconds
+Info: C:/Users/team06/.altera.quartus/ip/15.0/**/* matched 0 files in 0.00 seconds
+Info: Reading index C:\altera\15.0\ip\altera\altera_components.ipx
+Info: C:\altera\15.0\ip\altera\altera_components.ipx described 1517 plugins, 0 paths, in 0.08 seconds
+Info: C:/altera/15.0/ip/**/* matched 133 files in 0.08 seconds
+Info: Reading index C:\altera\15.0\quartus\sopc_builder\builtin.ipx
+Info: C:\altera\15.0\quartus\sopc_builder\builtin.ipx described 81 plugins, 0 paths, in 0.00 seconds
+Info: C:/altera/15.0/quartus/sopc_builder/**/* matched 8 files in 0.00 seconds
+Info: Reading index C:\altera\15.0\quartus\common\librarian\factories\index.ipx
+Info: C:\altera\15.0\quartus\common\librarian\factories\index.ipx described 151 plugins, 0 paths, in 0.02 seconds
+Info: C:/altera/15.0/quartus/common/librarian/factories/**/* matched 4 files in 0.02 seconds
+Info: C:/altera/15.0/quartus/sopc_builder/bin/$IP_IPX_PATH matched 1 files in 0.00 seconds
+Info: C:\altera\15.0\quartus\sopc_builder\bin\root_components.ipx described 0 plugins, 9 paths, in 0.16 seconds
+Info: C:/altera/15.0/quartus/sopc_builder/bin/root_components.ipx matched 1 files in 0.16 seconds
+Progress: 
+Progress: 
+Progress: 
+Info: Running script C:/altera/15.0/quartus/sopc_builder/bin/tbgen.tcl
+Info: send_message Info TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
+Info: TB_Gen: QSYS Testbench Generator Rev: $Revision: #1 $
+Info: get_module_property NAME
+Info: send_message Info TB_Gen: System design is: qsysP01
+Info: TB_Gen: System design is: qsysP01
+Info: get_interfaces 
+Info: get_connections 
+Info: get_interface_property clk EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in
+Info: get_interface_property hex_out EXPORT_OF
+Info: get_instance_property hex0_output CLASS_NAME
+Info: get_instance_assignment hex0_output testbench.partner.map.external_connection
+Info: get_interface_property led_out EXPORT_OF
+Info: get_instance_property led_output CLASS_NAME
+Info: get_instance_assignment led_output testbench.partner.map.external_connection
+Info: get_interface_property reset EXPORT_OF
+Info: get_instance_property clk_0 CLASS_NAME
+Info: get_instance_assignment clk_0 testbench.partner.map.clk_in_reset
+Info: get_interface_property rs232_ex EXPORT_OF
+Info: get_instance_property rs232_0 CLASS_NAME
+Info: get_instance_assignment rs232_0 testbench.partner.map.external_interface
+Info: get_interface_property sdram_clk EXPORT_OF
+Info: get_instance_property altpll_0 CLASS_NAME
+Info: get_instance_assignment altpll_0 testbench.partner.map.c0
+Info: get_interface_property sdram_w EXPORT_OF
+Info: get_instance_property sdram_control CLASS_NAME
+Info: get_instance_assignment sdram_control testbench.partner.map.wire
+Info: get_interface_property sw_in EXPORT_OF
+Info: get_instance_property sw_input CLASS_NAME
+Info: get_instance_assignment sw_input testbench.partner.map.external_connection
+Info: send_message Info TB_Gen: Creating testbench system : qsysP01_tb with all standard BFMs
+Info: TB_Gen: Creating testbench system : qsysP01_tb with all standard BFMs
+Info: create_system qsysP01_tb
+Info: add_instance qsysP01_inst qsysP01 
+Info: set_use_testbench_naming_pattern true qsysP01
+Info: get_instance_interfaces qsysP01_inst
+Info: get_instance_interface_property qsysP01_inst clk CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst hex_out CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst led_out CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst reset CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst rs232_ex CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst sdram_clk CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst sdram_w CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst sw_in CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst clk CLASS_NAME
+Info: send_message Info TB_Gen: clock_sink found: clk
+Info: TB_Gen: clock_sink found: clk
+Info: get_instance_interface_property qsysP01_inst clk CLASS_NAME
+Info: add_instance qsysP01_inst_clk_bfm altera_avalon_clock_source 
+Info: get_instance_property qsysP01_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value qsysP01_inst clk clockRate
+Info: set_instance_parameter_value qsysP01_inst_clk_bfm CLOCK_RATE 50000000.0
+Info: set_instance_parameter_value qsysP01_inst_clk_bfm CLOCK_UNIT 1
+Info: get_instance_property qsysP01_inst_clk_bfm CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst clk CLASS_NAME
+Info: get_instance_interfaces qsysP01_inst_clk_bfm
+Info: get_instance_interface_property qsysP01_inst_clk_bfm clk CLASS_NAME
+Info: add_connection qsysP01_inst_clk_bfm.clk qsysP01_inst.clk
+Info: get_instance_interface_property qsysP01_inst reset CLASS_NAME
+Info: send_message Info TB_Gen: reset_sink found: reset
+Info: TB_Gen: reset_sink found: reset
+Info: get_instance_interface_property qsysP01_inst reset CLASS_NAME
+Info: add_instance qsysP01_inst_reset_bfm altera_avalon_reset_source 
+Info: get_instance_property qsysP01_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_ports qsysP01_inst reset
+Info: get_instance_interface_port_property qsysP01_inst reset reset_reset_n ROLE
+Info: get_instance_interface_port_property qsysP01_inst reset reset_reset_n ROLE
+Info: set_instance_parameter_value qsysP01_inst_reset_bfm ASSERT_HIGH_RESET 0
+Info: set_instance_parameter_value qsysP01_inst_reset_bfm INITIAL_RESET_CYCLES 50
+Info: get_instance_property qsysP01_inst_reset_bfm CLASS_NAME
+Info: get_instance_interfaces qsysP01_inst_reset_bfm
+Info: get_instance_interface_property qsysP01_inst_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst_reset_bfm clk CLASS_NAME
+Info: get_instance_property qsysP01_inst_reset_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value qsysP01_inst reset associatedClock
+Info: get_instance_interfaces qsysP01_inst_clk_bfm
+Info: get_instance_interface_property qsysP01_inst_clk_bfm clk CLASS_NAME
+Info: send_message Warning TB_Gen: qsysP01_inst_reset_bfm is not associated to any clock; connecting qsysP01_inst_reset_bfm to 'qsysP01_inst_clk_bfm.clk'
+Warning: TB_Gen: qsysP01_inst_reset_bfm is not associated to any clock; connecting qsysP01_inst_reset_bfm to 'qsysP01_inst_clk_bfm.clk'
+Info: add_connection qsysP01_inst_clk_bfm.clk qsysP01_inst_reset_bfm.clk
+Info: get_instance_interface_property qsysP01_inst reset CLASS_NAME
+Info: get_instance_interfaces qsysP01_inst_reset_bfm
+Info: get_instance_interface_property qsysP01_inst_reset_bfm reset CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst_reset_bfm clk CLASS_NAME
+Info: add_connection qsysP01_inst_reset_bfm.reset qsysP01_inst.reset
+Info: get_instance_interface_property qsysP01_inst hex_out CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: hex_out
+Info: TB_Gen: conduit_end found: hex_out
+Info: get_instance_interface_property qsysP01_inst hex_out CLASS_NAME
+Info: add_instance qsysP01_inst_hex_out_bfm altera_conduit_bfm 
+Info: get_instance_property qsysP01_inst_hex_out_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value qsysP01_inst hex_out associatedClock
+Info: get_instance_interface_parameter_value qsysP01_inst hex_out associatedReset
+Info: get_instance_interface_ports qsysP01_inst hex_out
+Info: get_instance_interface_port_property qsysP01_inst hex_out hex_out_export ROLE
+Info: get_instance_interface_port_property qsysP01_inst hex_out hex_out_export WIDTH
+Info: get_instance_interface_port_property qsysP01_inst hex_out hex_out_export DIRECTION
+Info: set_instance_parameter_value qsysP01_inst_hex_out_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value qsysP01_inst_hex_out_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value qsysP01_inst_hex_out_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value qsysP01_inst_hex_out_bfm SIGNAL_WIDTHS 7
+Info: set_instance_parameter_value qsysP01_inst_hex_out_bfm SIGNAL_DIRECTIONS input
+Info: get_instance_property qsysP01_inst_hex_out_bfm CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst hex_out CLASS_NAME
+Info: get_instance_interfaces qsysP01_inst_hex_out_bfm
+Info: get_instance_interface_property qsysP01_inst_hex_out_bfm conduit CLASS_NAME
+Info: add_connection qsysP01_inst_hex_out_bfm.conduit qsysP01_inst.hex_out
+Info: get_instance_interface_property qsysP01_inst led_out CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: led_out
+Info: TB_Gen: conduit_end found: led_out
+Info: get_instance_interface_property qsysP01_inst led_out CLASS_NAME
+Info: add_instance qsysP01_inst_led_out_bfm altera_conduit_bfm 
+Info: get_instance_property qsysP01_inst_led_out_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value qsysP01_inst led_out associatedClock
+Info: get_instance_interface_parameter_value qsysP01_inst led_out associatedReset
+Info: get_instance_interface_ports qsysP01_inst led_out
+Info: get_instance_interface_port_property qsysP01_inst led_out led_out_export ROLE
+Info: get_instance_interface_port_property qsysP01_inst led_out led_out_export WIDTH
+Info: get_instance_interface_port_property qsysP01_inst led_out led_out_export DIRECTION
+Info: set_instance_parameter_value qsysP01_inst_led_out_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value qsysP01_inst_led_out_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value qsysP01_inst_led_out_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value qsysP01_inst_led_out_bfm SIGNAL_WIDTHS 18
+Info: set_instance_parameter_value qsysP01_inst_led_out_bfm SIGNAL_DIRECTIONS input
+Info: get_instance_property qsysP01_inst_led_out_bfm CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst led_out CLASS_NAME
+Info: get_instance_interfaces qsysP01_inst_led_out_bfm
+Info: get_instance_interface_property qsysP01_inst_led_out_bfm conduit CLASS_NAME
+Info: add_connection qsysP01_inst_led_out_bfm.conduit qsysP01_inst.led_out
+Info: get_instance_interface_property qsysP01_inst rs232_ex CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: rs232_ex
+Info: TB_Gen: conduit_end found: rs232_ex
+Info: get_instance_interface_property qsysP01_inst rs232_ex CLASS_NAME
+Info: add_instance qsysP01_inst_rs232_ex_bfm altera_conduit_bfm 
+Info: get_instance_property qsysP01_inst_rs232_ex_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value qsysP01_inst rs232_ex associatedClock
+Info: get_instance_interface_parameter_value qsysP01_inst rs232_ex associatedReset
+Info: get_instance_interface_ports qsysP01_inst rs232_ex
+Info: get_instance_interface_port_property qsysP01_inst rs232_ex rs232_ex_RXD ROLE
+Info: get_instance_interface_port_property qsysP01_inst rs232_ex rs232_ex_RXD WIDTH
+Info: get_instance_interface_port_property qsysP01_inst rs232_ex rs232_ex_RXD DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst rs232_ex rs232_ex_TXD ROLE
+Info: get_instance_interface_port_property qsysP01_inst rs232_ex rs232_ex_TXD WIDTH
+Info: get_instance_interface_port_property qsysP01_inst rs232_ex rs232_ex_TXD DIRECTION
+Info: set_instance_parameter_value qsysP01_inst_rs232_ex_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value qsysP01_inst_rs232_ex_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value qsysP01_inst_rs232_ex_bfm SIGNAL_ROLES RXD TXD
+Info: set_instance_parameter_value qsysP01_inst_rs232_ex_bfm SIGNAL_WIDTHS 1 1
+Info: set_instance_parameter_value qsysP01_inst_rs232_ex_bfm SIGNAL_DIRECTIONS output input
+Info: get_instance_property qsysP01_inst_rs232_ex_bfm CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst rs232_ex CLASS_NAME
+Info: get_instance_interfaces qsysP01_inst_rs232_ex_bfm
+Info: get_instance_interface_property qsysP01_inst_rs232_ex_bfm conduit CLASS_NAME
+Info: add_connection qsysP01_inst_rs232_ex_bfm.conduit qsysP01_inst.rs232_ex
+Info: get_instance_interface_property qsysP01_inst sdram_w CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: sdram_w
+Info: TB_Gen: conduit_end found: sdram_w
+Info: get_instance_interface_property qsysP01_inst sdram_w CLASS_NAME
+Info: add_instance qsysP01_inst_sdram_w_bfm altera_conduit_bfm 
+Info: get_instance_property qsysP01_inst_sdram_w_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value qsysP01_inst sdram_w associatedClock
+Info: get_instance_interface_parameter_value qsysP01_inst sdram_w associatedReset
+Info: get_instance_interface_ports qsysP01_inst sdram_w
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_addr ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_addr WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_addr DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_ba ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_ba WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_ba DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cas_n ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cas_n WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cas_n DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cke ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cke WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cke DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cs_n ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cs_n WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_cs_n DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_dq ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_dq WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_dq DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_dqm ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_dqm WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_dqm DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_ras_n ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_ras_n WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_ras_n DIRECTION
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_we_n ROLE
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_we_n WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sdram_w sdram_w_we_n DIRECTION
+Info: set_instance_parameter_value qsysP01_inst_sdram_w_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value qsysP01_inst_sdram_w_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value qsysP01_inst_sdram_w_bfm SIGNAL_ROLES addr ba cas_n cke cs_n dq dqm ras_n we_n
+Info: set_instance_parameter_value qsysP01_inst_sdram_w_bfm SIGNAL_WIDTHS 13 2 1 1 1 32 4 1 1
+Info: set_instance_parameter_value qsysP01_inst_sdram_w_bfm SIGNAL_DIRECTIONS input input input input input bidir input input input
+Info: get_instance_property qsysP01_inst_sdram_w_bfm CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst sdram_w CLASS_NAME
+Info: get_instance_interfaces qsysP01_inst_sdram_w_bfm
+Info: get_instance_interface_property qsysP01_inst_sdram_w_bfm conduit CLASS_NAME
+Info: add_connection qsysP01_inst_sdram_w_bfm.conduit qsysP01_inst.sdram_w
+Info: get_instance_interface_property qsysP01_inst sw_in CLASS_NAME
+Info: send_message Info TB_Gen: conduit_end found: sw_in
+Info: TB_Gen: conduit_end found: sw_in
+Info: get_instance_interface_property qsysP01_inst sw_in CLASS_NAME
+Info: add_instance qsysP01_inst_sw_in_bfm altera_conduit_bfm 
+Info: get_instance_property qsysP01_inst_sw_in_bfm CLASS_NAME
+Info: get_instance_interface_parameter_value qsysP01_inst sw_in associatedClock
+Info: get_instance_interface_parameter_value qsysP01_inst sw_in associatedReset
+Info: get_instance_interface_ports qsysP01_inst sw_in
+Info: get_instance_interface_port_property qsysP01_inst sw_in sw_in_export ROLE
+Info: get_instance_interface_port_property qsysP01_inst sw_in sw_in_export WIDTH
+Info: get_instance_interface_port_property qsysP01_inst sw_in sw_in_export DIRECTION
+Info: set_instance_parameter_value qsysP01_inst_sw_in_bfm CLOCKED_SIGNAL 0
+Info: set_instance_parameter_value qsysP01_inst_sw_in_bfm ENABLE_RESET 0
+Info: set_instance_parameter_value qsysP01_inst_sw_in_bfm SIGNAL_ROLES export
+Info: set_instance_parameter_value qsysP01_inst_sw_in_bfm SIGNAL_WIDTHS 18
+Info: set_instance_parameter_value qsysP01_inst_sw_in_bfm SIGNAL_DIRECTIONS output
+Info: get_instance_property qsysP01_inst_sw_in_bfm CLASS_NAME
+Info: get_instance_interface_property qsysP01_inst sw_in CLASS_NAME
+Info: get_instance_interfaces qsysP01_inst_sw_in_bfm
+Info: get_instance_interface_property qsysP01_inst_sw_in_bfm conduit CLASS_NAME
+Info: add_connection qsysP01_inst_sw_in_bfm.conduit qsysP01_inst.sw_in
+Info: send_message Info TB_Gen: Saving testbench system: qsysP01_tb.qsys
+Info: TB_Gen: Saving testbench system: qsysP01_tb.qsys
+Info: save_system qsysP01_tb.qsys
+Info: send_message Info TB_Gen: TBGEN SUCCESSFUL
+Info: TB_Gen: TBGEN SUCCESSFUL
+Info: Testbench system: C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/qsysP01_tb.qsys
+Info: Done
+Info: qsys-generate C:\Users\team06\Desktop\project02\project01\project01\qsys\qsysP01.qsys --simulation=VERILOG --testbench=STANDARD --testbench-simulation=VERILOG --output-directory=C:\Users\team06\Desktop\project02\project01\project01\qsys\qsys\testbench\qsysP01_tb\simulation --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading testbench/qsysP01_tb.qsys
+Progress: Reading input file
+Progress: Adding qsysP01_inst [qsysP01 1.0]
+Progress: Parameterizing module qsysP01_inst
+Progress: Adding qsysP01_inst_clk_bfm [altera_avalon_clock_source 15.0]
+Progress: Parameterizing module qsysP01_inst_clk_bfm
+Progress: Adding qsysP01_inst_hex_out_bfm [altera_conduit_bfm 15.0]
+Progress: Parameterizing module qsysP01_inst_hex_out_bfm
+Progress: Adding qsysP01_inst_led_out_bfm [altera_conduit_bfm 15.0]
+Progress: Parameterizing module qsysP01_inst_led_out_bfm
+Progress: Adding qsysP01_inst_reset_bfm [altera_avalon_reset_source 15.0]
+Progress: Parameterizing module qsysP01_inst_reset_bfm
+Progress: Adding qsysP01_inst_rs232_ex_bfm [altera_conduit_bfm 15.0]
+Progress: Parameterizing module qsysP01_inst_rs232_ex_bfm
+Progress: Adding qsysP01_inst_sdram_w_bfm [altera_conduit_bfm 15.0]
+Progress: Parameterizing module qsysP01_inst_sdram_w_bfm
+Progress: Adding qsysP01_inst_sw_in_bfm [altera_conduit_bfm 15.0]
+Progress: Parameterizing module qsysP01_inst_sw_in_bfm
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsysP01_tb.qsysP01_inst.sw_input: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: qsysP01_tb.qsysP01_inst.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: qsysP01_tb.qsysP01_inst.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+Warning: qsysP01_tb.qsysP01_inst.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsysP01_tb.qsysP01_inst.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsysP01_tb.qsysP01_inst.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: qsysP01_tb.qsysP01_inst_clk_bfm: Elaborate: altera_clock_source
+Info: qsysP01_tb.qsysP01_inst_clk_bfm:            $Revision: #1 $
+Info: qsysP01_tb.qsysP01_inst_clk_bfm:            $Date: 2015/02/08 $
+Info: qsysP01_tb.qsysP01_inst_reset_bfm: Elaborate: altera_reset_source
+Info: qsysP01_tb.qsysP01_inst_reset_bfm:            $Revision: #1 $
+Info: qsysP01_tb.qsysP01_inst_reset_bfm:            $Date: 2015/02/08 $
+Info: qsysP01_tb.qsysP01_inst_reset_bfm: Reset is negatively asserted.
+Info: qsysP01_tb: Generating qsysP01_tb "qsysP01_tb" for SIM_VERILOG
+Info: Inserting clock-crossing logic between cmd_demux.src5 and cmd_mux_005.sink0
+Info: Inserting clock-crossing logic between cmd_demux_001.src5 and cmd_mux_005.sink1
+Info: Inserting clock-crossing logic between rsp_demux_005.src0 and rsp_mux.sink5
+Info: Inserting clock-crossing logic between rsp_demux_005.src1 and rsp_mux_001.sink5
+Info: qsysP01_inst: "qsysP01_tb" instantiated qsysP01 "qsysP01_inst"
+Info: qsysP01_inst_clk_bfm: "qsysP01_tb" instantiated altera_avalon_clock_source "qsysP01_inst_clk_bfm"
+Info: qsysP01_inst_hex_out_bfm: "qsysP01_tb" instantiated altera_conduit_bfm "qsysP01_inst_hex_out_bfm"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv
+Info: qsysP01_inst_led_out_bfm: "qsysP01_tb" instantiated altera_conduit_bfm "qsysP01_inst_led_out_bfm"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv
+Info: qsysP01_inst_reset_bfm: "qsysP01_tb" instantiated altera_avalon_reset_source "qsysP01_inst_reset_bfm"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv
+Info: qsysP01_inst_rs232_ex_bfm: "qsysP01_tb" instantiated altera_conduit_bfm "qsysP01_inst_rs232_ex_bfm"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv
+Info: qsysP01_inst_sdram_w_bfm: "qsysP01_tb" instantiated altera_conduit_bfm "qsysP01_inst_sdram_w_bfm"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv
+Info: qsysP01_inst_sw_in_bfm: "qsysP01_tb" instantiated altera_conduit_bfm "qsysP01_inst_sw_in_bfm"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv
+Info: altpll_0: Generating Verilog simulation model
+Info: altpll_0: Generated simulation model qsysP01_altpll_0.vo
+Info: altpll_0: "qsysP01_inst" instantiated altpll "altpll_0"
+Info: hex0_output: Starting RTL generation for module 'qsysP01_hex0_output'
+Info: hex0_output:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qsysP01_hex0_output --dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0408_hex0_output_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0408_hex0_output_gen//qsysP01_hex0_output_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0408_hex0_output_gen/  ]
+Info: hex0_output: Done RTL generation for module 'qsysP01_hex0_output'
+Info: hex0_output: "qsysP01_inst" instantiated altera_avalon_pio "hex0_output"
+Info: jtag_uart_0: Starting RTL generation for module 'qsysP01_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=qsysP01_jtag_uart_0 --dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0409_jtag_uart_0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0409_jtag_uart_0_gen//qsysP01_jtag_uart_0_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0409_jtag_uart_0_gen/  ]
+Info: jtag_uart_0: Done RTL generation for module 'qsysP01_jtag_uart_0'
+Info: jtag_uart_0: "qsysP01_inst" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: led_output: Starting RTL generation for module 'qsysP01_led_output'
+Info: led_output:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qsysP01_led_output --dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0410_led_output_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0410_led_output_gen//qsysP01_led_output_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0410_led_output_gen/  ]
+Info: led_output: Done RTL generation for module 'qsysP01_led_output'
+Info: led_output: "qsysP01_inst" instantiated altera_avalon_pio "led_output"
+Info: nios2: "qsysP01_inst" instantiated altera_nios2_gen2 "nios2"
+Info: onchip_memory2_0: Starting RTL generation for module 'qsysP01_onchip_memory2_0'
+Info: onchip_memory2_0:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=qsysP01_onchip_memory2_0 --dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0411_onchip_memory2_0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0411_onchip_memory2_0_gen//qsysP01_onchip_memory2_0_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0411_onchip_memory2_0_gen/  ]
+Info: onchip_memory2_0: Done RTL generation for module 'qsysP01_onchip_memory2_0'
+Info: onchip_memory2_0: "qsysP01_inst" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
+Info: rs232_0: Starting Generation of RS232 UART
+Info: rs232_0: "qsysP01_inst" instantiated altera_up_avalon_rs232 "rs232_0"
+Info: sdram_control: Starting RTL generation for module 'qsysP01_sdram_control'
+Info: sdram_control:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=qsysP01_sdram_control --dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0413_sdram_control_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0413_sdram_control_gen//qsysP01_sdram_control_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0413_sdram_control_gen/  ]
+Info: sdram_control: Done RTL generation for module 'qsysP01_sdram_control'
+Info: sdram_control: "qsysP01_inst" instantiated altera_avalon_new_sdram_controller "sdram_control"
+Info: sw_input: Starting RTL generation for module 'qsysP01_sw_input'
+Info: sw_input:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qsysP01_sw_input --dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0414_sw_input_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0414_sw_input_gen//qsysP01_sw_input_component_configuration.pl  --do_build_sim=1    --sim_dir=C:/Users/team06/AppData/Local/Temp/alt7715_867804875314488818.dir/0414_sw_input_gen/  ]
+Info: sw_input: Done RTL generation for module 'qsysP01_sw_input'
+Info: sw_input: "qsysP01_inst" instantiated altera_avalon_pio "sw_input"
+Info: sysid_qsys_0: Generating Verilog simulation model
+Info: sysid_qsys_0: Generated simulation model qsysP01_sysid_qsys_0.vo
+Info: sysid_qsys_0: "qsysP01_inst" instantiated altera_avalon_sysid_qsys "sysid_qsys_0"
+Error: test_slave_0: test_slave does not support generation for Verilog Simulation. Generation is available for: Quartus Synthesis.
+Error: Generation stopped, 5 or more modules remaining
+Info: qsysP01_tb: Done "qsysP01_tb" with 24 modules, 24 files
+Error: ip-generate failed with exit code 1: 2 Errors, 3 Warnings
+Error: There were errors creating the testbench system.
+Info: Finished: Create testbench Qsys system

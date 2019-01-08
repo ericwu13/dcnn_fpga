@@ -1,0 +1,44 @@
+#include "./system.h"
+#include "./altera_up_avalon_rs232/HAL/inc/altera_up_avalon_rs232_regs.h"
+#include "./HAL/inc/nios2.h"
+#include <stdio.h>
+
+
+
+int main()
+{
+	unsigned int size = 64000;
+	int array[64000]={0};
+	int i=0;
+	int rx_ok = 0;
+	char rx_char;
+	char data;
+	data = IORD_ALT_UP_RS232_DATA(RS232_0_BASE);
+	array[0] = (int)data;
+	printf(array[0]);
+
+/*
+	while(1){
+
+		rx_char = IORD_ALTERA_AVALON_UART_STATUS(RS232_BASE);
+		rx_ok = (int)rx_char & 128;
+
+		if(rx_ok == 128){
+			data = IORD_ALTERA_AVALON_UART_RXDATA(RS232_BASE);
+			array[i] = (int)data;
+			IOWR_ALTERA_AVALON_UART_TXDATA(RS232_BASE, 1);
+			i++;
+		}
+		else IOWR_ALTERA_AVALON_UART_TXDATA(RS232_BASE, 0);
+
+		if(i==size) break;
+
+	}
+
+	printf("Final\n");
+	for(i=0 ; i<size ; ++i){
+		printf("%d\n",array[i]);
+	}
+*/
+	return 0;
+}

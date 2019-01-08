@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;nios01/utils.c&apos; to &apos;utils.h&apos;" description="Rename resource &apos;utils.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="utils.c" name="utils.h" stamp="1530724916897" updateReferences="true"/>
+</session>

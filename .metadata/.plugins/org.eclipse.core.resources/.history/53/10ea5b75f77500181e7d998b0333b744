@@ -1,0 +1,60 @@
+#include "./system.h"
+#include "./HAL/inc/altera_up_avalon_rs232_regs.h"
+#include "./HAL/inc/altera_up_avalon_rs232.h"
+#include "./HAL/inc/nios2.h"
+#include <stdio.h>
+
+#define READ_FIFO_EMPTY 0x0
+
+int main()
+{
+	alt_up_rs232_dev* rs232_ptr ;
+	rs232_ptr = alt_up_rs232_open_dev("/dev/rs232_0");
+	if(rs232_ptr == NULL){ printf("Error\n"); }
+	else{printf("Open\n"); }
+	alt_up_rs232_enable_read_interrupt(rs232_ptr);
+	alt_u16 read_FIFO_used;
+	alt_u8 data;
+	alt_u8 par;
+	int count = 0;
+
+	while(1){
+		read_FIFO_used = alt_up_rs232_get_used_space_in_read_FIFO(rs232_ptr);
+		if(read_FIFO_used>READ_FIFO_EMPTY){
+			printf("Stored in read FIFO: %x\n", read_FIFO_used);
+			alt_up_rs232_read_data(rs232_ptr ,&data, &par);
+			printf("%d\n",(int)data);
+			count++;
+		}
+		if(count>=100){
+			printf("Finish!\n");
+			break;
+		}
+	}
+
+
+	/*
+	alt_u8 data;
+	alt_u8* data_ptr = data;
+	alt_u8 par;
+	alt_u8* par_ptr = par;
+
+
+	unsigned int size = 64000;
+	int array[64000]={0};
+	int i=0;
+	int a = 1;
+	while(1){
+		a = alt_up_rs232_read_data(ptr ,data_ptr, par_ptr);
+		if(a==0){
+			i++;
+			printf("%d ",(*data));
+		}
+		if(i == 100) break;
+	}
+	printf("End %d",i);
+
+	*/
+	return 0;
+}
+

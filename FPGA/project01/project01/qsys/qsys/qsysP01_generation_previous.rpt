@@ -1,0 +1,181 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\team06\Desktop\project02\project01\project01\qsys\qsysP01.qsys --block-symbol-file --output-directory=C:\Users\team06\Desktop\project02\project01\project01\qsys\qsys --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading qsys/qsysP01.qsys
+Progress: Reading input file
+Progress: Adding altpll_0 [altpll 15.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding hex0 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex0
+Progress: Adding hex1 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex1
+Progress: Adding hex2 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex2
+Progress: Adding hex3 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex3
+Progress: Adding hex4 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex4
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 15.0]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding led_output [altera_avalon_pio 15.0]
+Progress: Parameterizing module led_output
+Progress: Adding nios2 [altera_nios2_gen2 15.0]
+Progress: Parameterizing module nios2
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding rs232_0 [altera_up_avalon_rs232 15.0]
+Progress: Parameterizing module rs232_0
+Progress: Adding sdram_control [altera_avalon_new_sdram_controller 15.0]
+Progress: Parameterizing module sdram_control
+Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 15.0]
+Progress: Parameterizing module sysid_qsys_0
+Progress: Adding test_slave_0 [test_slave 1.0]
+Progress: Parameterizing module test_slave_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsysP01.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: qsysP01.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+Warning: qsysP01.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsysP01.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsysP01.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\team06\Desktop\project02\project01\project01\qsys\qsysP01.qsys --synthesis=VERILOG --output-directory=C:\Users\team06\Desktop\project02\project01\project01\qsys\qsys\synthesis --family="Cyclone IV E" --part=EP4CE115F29C7
+Progress: Loading qsys/qsysP01.qsys
+Progress: Reading input file
+Progress: Adding altpll_0 [altpll 15.0]
+Progress: Parameterizing module altpll_0
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding hex0 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex0
+Progress: Adding hex1 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex1
+Progress: Adding hex2 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex2
+Progress: Adding hex3 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex3
+Progress: Adding hex4 [altera_avalon_pio 15.0]
+Progress: Parameterizing module hex4
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 15.0]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding led_output [altera_avalon_pio 15.0]
+Progress: Parameterizing module led_output
+Progress: Adding nios2 [altera_nios2_gen2 15.0]
+Progress: Parameterizing module nios2
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding rs232_0 [altera_up_avalon_rs232 15.0]
+Progress: Parameterizing module rs232_0
+Progress: Adding sdram_control [altera_avalon_new_sdram_controller 15.0]
+Progress: Parameterizing module sdram_control
+Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 15.0]
+Progress: Parameterizing module sysid_qsys_0
+Progress: Adding test_slave_0 [test_slave 1.0]
+Progress: Parameterizing module test_slave_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsysP01.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: qsysP01.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+Warning: qsysP01.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsysP01.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsysP01.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: qsysP01: Generating qsysP01 "qsysP01" for QUARTUS_SYNTH
+Info: Inserting clock-crossing logic between cmd_demux.src5 and cmd_mux_005.sink0
+Info: Inserting clock-crossing logic between cmd_demux_001.src5 and cmd_mux_005.sink1
+Info: Inserting clock-crossing logic between rsp_demux_005.src0 and rsp_mux.sink5
+Info: Inserting clock-crossing logic between rsp_demux_005.src1 and rsp_mux_001.sink5
+Info: altpll_0: "qsysP01" instantiated altpll "altpll_0"
+Info: hex0: Starting RTL generation for module 'qsysP01_hex0'
+Info: hex0:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qsysP01_hex0 --dir=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0118_hex0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0118_hex0_gen//qsysP01_hex0_component_configuration.pl  --do_build_sim=0  ]
+Info: hex0: Done RTL generation for module 'qsysP01_hex0'
+Info: hex0: "qsysP01" instantiated altera_avalon_pio "hex0"
+Info: jtag_uart_0: Starting RTL generation for module 'qsysP01_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=qsysP01_jtag_uart_0 --dir=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0119_jtag_uart_0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0119_jtag_uart_0_gen//qsysP01_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0: Done RTL generation for module 'qsysP01_jtag_uart_0'
+Info: jtag_uart_0: "qsysP01" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: led_output: Starting RTL generation for module 'qsysP01_led_output'
+Info: led_output:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qsysP01_led_output --dir=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0120_led_output_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0120_led_output_gen//qsysP01_led_output_component_configuration.pl  --do_build_sim=0  ]
+Info: led_output: Done RTL generation for module 'qsysP01_led_output'
+Info: led_output: "qsysP01" instantiated altera_avalon_pio "led_output"
+Info: nios2: "qsysP01" instantiated altera_nios2_gen2 "nios2"
+Info: onchip_memory2_0: Starting RTL generation for module 'qsysP01_onchip_memory2_0'
+Info: onchip_memory2_0:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=qsysP01_onchip_memory2_0 --dir=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0121_onchip_memory2_0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0121_onchip_memory2_0_gen//qsysP01_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2_0: Done RTL generation for module 'qsysP01_onchip_memory2_0'
+Info: onchip_memory2_0: "qsysP01" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
+Info: rs232_0: Starting Generation of RS232 UART
+Info: rs232_0: "qsysP01" instantiated altera_up_avalon_rs232 "rs232_0"
+Info: sdram_control: Starting RTL generation for module 'qsysP01_sdram_control'
+Info: sdram_control:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=qsysP01_sdram_control --dir=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0123_sdram_control_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0123_sdram_control_gen//qsysP01_sdram_control_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram_control: Done RTL generation for module 'qsysP01_sdram_control'
+Info: sdram_control: "qsysP01" instantiated altera_avalon_new_sdram_controller "sdram_control"
+Info: sysid_qsys_0: "qsysP01" instantiated altera_avalon_sysid_qsys "sysid_qsys_0"
+Info: test_slave_0: "qsysP01" instantiated test_slave "test_slave_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_011: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_012: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_013: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "qsysP01" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "qsysP01" instantiated altera_irq_mapper "irq_mapper"
+Info: rst_controller: "qsysP01" instantiated altera_reset_controller "rst_controller"
+Info: cpu: Starting RTL generation for module 'qsysP01_nios2_cpu'
+Info: cpu:   Generation command is [exec C:/altera/15.0/quartus/bin64/eperlcmd.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=qsysP01_nios2_cpu --dir=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0128_cpu_gen/ --quartus_bindir=C:/altera/15.0/quartus/bin64 --verilog --config=C:/Users/team06/AppData/Local/Temp/alt7719_1429881431017850752.dir/0128_cpu_gen//qsysP01_nios2_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2018.07.07 17:25:02 (*) Starting Nios II generation
+Info: cpu: # 2018.07.07 17:25:02 (*)   Checking for plaintext license.
+Info: cpu: # 2018.07.07 17:25:03 (*)   Plaintext license not found.
+Info: cpu: # 2018.07.07 17:25:03 (*)   Checking for encrypted license (non-evaluation).
+Info: cpu: # 2018.07.07 17:25:04 (*)   Encrypted license found.  SOF will not be time-limited.
+Info: cpu: # 2018.07.07 17:25:04 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2018.07.07 17:25:04 (*)   Creating all objects for CPU
+Info: cpu: # 2018.07.07 17:25:04 (*)     Testbench
+Info: cpu: # 2018.07.07 17:25:04 (*)     Instruction decoding
+Info: cpu: # 2018.07.07 17:25:04 (*)       Instruction fields
+Info: cpu: # 2018.07.07 17:25:05 (*)       Instruction decodes
+Info: cpu: # 2018.07.07 17:25:05 (*)       Signals for RTL simulation waveforms
+Info: cpu: # 2018.07.07 17:25:05 (*)       Instruction controls
+Info: cpu: # 2018.07.07 17:25:05 (*)     Pipeline frontend
+Info: cpu: # 2018.07.07 17:25:05 (*)     Pipeline backend
+Info: cpu: # 2018.07.07 17:25:07 (*)   Generating RTL from CPU objects
+Info: cpu: # 2018.07.07 17:25:08 (*)   Creating encrypted RTL
+Info: cpu: # 2018.07.07 17:25:09 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'qsysP01_nios2_cpu'
+Info: cpu: "nios2" instantiated altera_nios2_gen2_unit "cpu"
+Info: nios2_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_data_master_translator"
+Info: jtag_uart_0_avalon_jtag_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "jtag_uart_0_avalon_jtag_slave_translator"
+Info: nios2_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "nios2_data_master_agent"
+Info: jtag_uart_0_avalon_jtag_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "jtag_uart_0_avalon_jtag_slave_agent"
+Info: jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: nios2_data_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "nios2_data_master_limiter"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_demux_005: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_005"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: crosser: "mm_interconnect_0" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
+Info: Reusing file C:/Users/team06/Desktop/project02/project01/project01/qsys/qsys/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: qsysP01: Done "qsysP01" with 31 modules, 58 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

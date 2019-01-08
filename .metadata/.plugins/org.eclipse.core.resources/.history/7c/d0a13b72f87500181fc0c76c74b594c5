@@ -1,0 +1,11 @@
+
+#include <stdio.h>
+
+#define READ_FIFO_EMPTY 0x0
+
+int main()
+{
+	printf("hello\n");
+	return 0;
+}
+

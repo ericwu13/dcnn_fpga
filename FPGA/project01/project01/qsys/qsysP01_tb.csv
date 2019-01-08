@@ -1,0 +1,69 @@
+# system info qsysP01_tb on 2018.07.04.23:17:00
+system_info:
+name,value
+DEVICE,EP4CE115F29C7
+DEVICE_FAMILY,Cyclone IV E
+GENERATION_ID,1530717396
+#
+#
+# Files generated for qsysP01_tb on 2018.07.04.23:17:00
+files:
+filepath,kind,attributes,module,is_top
+qsys/testbench/qsysP01_tb/simulation/qsysP01_tb.v,VERILOG,,qsysP01_tb,true
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01.v,VERILOG,,qsysP01,false
+qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv,SYSTEM_VERILOG, COMMON_SYSTEMVERILOG_PACKAGE=avalon_vip_verbosity_pkg,altera_avalon_clock_source,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_avalon_clock_source.sv,SYSTEM_VERILOG,,altera_avalon_clock_source,false
+qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv,SYSTEM_VERILOG, COMMON_SYSTEMVERILOG_PACKAGE=avalon_vip_verbosity_pkg,altera_conduit_bfm,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm.sv,SYSTEM_VERILOG,,altera_conduit_bfm,false
+qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv,SYSTEM_VERILOG, COMMON_SYSTEMVERILOG_PACKAGE=avalon_vip_verbosity_pkg,altera_conduit_bfm_0002,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm_0002.sv,SYSTEM_VERILOG,,altera_conduit_bfm_0002,false
+qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv,SYSTEM_VERILOG, COMMON_SYSTEMVERILOG_PACKAGE=avalon_vip_verbosity_pkg,altera_avalon_reset_source,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_avalon_reset_source.sv,SYSTEM_VERILOG,,altera_avalon_reset_source,false
+qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv,SYSTEM_VERILOG, COMMON_SYSTEMVERILOG_PACKAGE=avalon_vip_verbosity_pkg,altera_conduit_bfm_0003,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm_0003.sv,SYSTEM_VERILOG,,altera_conduit_bfm_0003,false
+qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv,SYSTEM_VERILOG, COMMON_SYSTEMVERILOG_PACKAGE=avalon_vip_verbosity_pkg,altera_conduit_bfm_0004,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm_0004.sv,SYSTEM_VERILOG,,altera_conduit_bfm_0004,false
+qsys/testbench/qsysP01_tb/simulation/submodules/verbosity_pkg.sv,SYSTEM_VERILOG, COMMON_SYSTEMVERILOG_PACKAGE=avalon_vip_verbosity_pkg,altera_conduit_bfm_0005,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_conduit_bfm_0005.sv,SYSTEM_VERILOG,,altera_conduit_bfm_0005,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_altpll_0.vo,VERILOG,,qsysP01_altpll_0,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_hex0_output.v,VERILOG,,qsysP01_hex0_output,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_jtag_uart_0.v,VERILOG,,qsysP01_jtag_uart_0,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_led_output.v,VERILOG,,qsysP01_led_output,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_nios2.v,VERILOG,,qsysP01_nios2,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_onchip_memory2_0.v,VERILOG,,qsysP01_onchip_memory2_0,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_up_rs232_counters.v,VERILOG,,qsysP01_rs232_0,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_up_rs232_in_deserializer.v,VERILOG,,qsysP01_rs232_0,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_up_rs232_out_serializer.v,VERILOG,,qsysP01_rs232_0,false
+qsys/testbench/qsysP01_tb/simulation/submodules/altera_up_sync_fifo.v,VERILOG,,qsysP01_rs232_0,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_rs232_0.v,VERILOG,,qsysP01_rs232_0,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_sdram_control.v,VERILOG,,qsysP01_sdram_control,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_sw_input.v,VERILOG,,qsysP01_sw_input,false
+qsys/testbench/qsysP01_tb/simulation/submodules/qsysP01_sysid_qsys_0.vo,VERILOG,,qsysP01_sysid_qsys_0,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+qsysP01_tb.qsysP01_inst,qsysP01
+qsysP01_tb.qsysP01_inst.altpll_0,qsysP01_altpll_0
+qsysP01_tb.qsysP01_inst.hex0_output,qsysP01_hex0_output
+qsysP01_tb.qsysP01_inst.jtag_uart_0,qsysP01_jtag_uart_0
+qsysP01_tb.qsysP01_inst.led_output,qsysP01_led_output
+qsysP01_tb.qsysP01_inst.nios2,qsysP01_nios2
+qsysP01_tb.qsysP01_inst.nios2.cpu,qsysP01_nios2_cpu
+qsysP01_tb.qsysP01_inst.onchip_memory2_0,qsysP01_onchip_memory2_0
+qsysP01_tb.qsysP01_inst.rs232_0,qsysP01_rs232_0
+qsysP01_tb.qsysP01_inst.sdram_control,qsysP01_sdram_control
+qsysP01_tb.qsysP01_inst.sw_input,qsysP01_sw_input
+qsysP01_tb.qsysP01_inst.sysid_qsys_0,qsysP01_sysid_qsys_0
+qsysP01_tb.qsysP01_inst.test_slave_0,qsysP01_test_slave_0
+qsysP01_tb.qsysP01_inst.mm_interconnect_0,qsysP01_mm_interconnect_0
+qsysP01_tb.qsysP01_inst.irq_mapper,qsysP01_irq_mapper
+qsysP01_tb.qsysP01_inst.rst_controller,altera_reset_controller
+qsysP01_tb.qsysP01_inst.rst_controller_001,altera_reset_controller
+qsysP01_tb.qsysP01_inst_clk_bfm,altera_avalon_clock_source
+qsysP01_tb.qsysP01_inst_hex_out_bfm,altera_conduit_bfm
+qsysP01_tb.qsysP01_inst_led_out_bfm,altera_conduit_bfm_0002
+qsysP01_tb.qsysP01_inst_reset_bfm,altera_avalon_reset_source
+qsysP01_tb.qsysP01_inst_rs232_ex_bfm,altera_conduit_bfm_0003
+qsysP01_tb.qsysP01_inst_sdram_w_bfm,altera_conduit_bfm_0004
+qsysP01_tb.qsysP01_inst_sw_in_bfm,altera_conduit_bfm_0005
